@@ -3,14 +3,14 @@
 
 using namespace std;
 
-class Dog : public Animal {
+class Horse : public Animal {
 private:
   string earType;
   double height;
   string tailColour;
 public:
-  Dog(string earType, double height, string tailColour);
-  ~Dog();
+  Horse(string earType, double height, string tailColour);
+  ~Horse();
   string getEarType();
   double getHeight();
   string getTailColour();
