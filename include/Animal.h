@@ -11,6 +11,8 @@ private:
 	string mumName;
 
 public:
+	Animal(string breed, string name, string colour, string dadName, string mumName);
+	~Animal();
 	string getBreed();
 	string getName();
 	string getColour();

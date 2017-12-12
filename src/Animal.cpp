@@ -1,6 +1,14 @@
 #include "../include/Animal.h"
 using namespace std;
 
+Animal::Animal(string breed, string name, string colour, string dadName, string mumName) {
+  this->breed = breed;
+  this->name = name;
+  this->colour = colour;
+  this->dadName = dadName;
+  this->mumName = mumName;
+}
+
 string Animal::getBreed() {
   return this->breed;
 }
