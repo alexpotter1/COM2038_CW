@@ -5,7 +5,7 @@ OBJDIR = obj
 BINDIR = bin
 
 CC = g++
-CFLAGS = -g Wall -I$(INCDIR)
+CFLAGS = -g -Wall -I$(INCDIR)
 LINKER = g++ -o
 LFLAGS = -Wall -I$(INCDIR) -lm
 
