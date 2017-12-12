@@ -18,3 +18,6 @@ $(BINDIR)/$(TARGET): $(OBJECTS)
 
 $(OBJECTS): $(OBJDIR)%.o : $ $(SRCDIR)/%.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	-rm *.o $(OBJECTS) bin/main
