@@ -5,7 +5,7 @@
 
 int main(){
 	ifstream dogsFile("Dogs.csv");
-	ifstream* files[5];
+	ifstream** files;
 	files[0] = &dogsFile;
 	CSVFileReader csvFileReader;
 	csvFileReader.instantiateAnimals(files);

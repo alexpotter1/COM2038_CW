@@ -4,5 +4,5 @@ using namespace std;
 class CSVFileReader {
 public:
 	CSVFileReader();
-	void instantiateAnimals(ifstream files[]);
+	void instantiateAnimals(ifstream** files);
 };
