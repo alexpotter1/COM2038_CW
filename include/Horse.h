@@ -9,7 +9,14 @@ private:
   double height;
   string tailColour;
 public:
-  Horse(string earType, double height, string tailColour);
+  Horse(string breed, string name, string colour, string dadName, string mumName,
+           string earType, double height, string tailColour)
+           : Animal(breed, name, colour, dadName, mumName)
+           {
+             this->earType = earType;
+             this->height = height;
+             this->tailColour = tailColour;
+           }
   ~Horse();
   string getEarType();
   double getHeight();
