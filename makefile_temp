@@ -1,0 +1,16 @@
+CC = g++
+CSV_FILE_READER = CSVFileReader
+MAIN = main
+
+
+main: $(MAIN).o $(CSV_FILE_READER).o
+
+	$(CC) $(MAIN).o $(CSV_FILE_READER).o -o main
+
+$(MAIN).o: $(MAIN).cpp $(CSV_FILE_READER).h
+
+	$(CC) -c $(MAIN).cpp
+
+$(CSV_FILE_READER).o: $(CSV_FILE_READER).cpp $(CSV_FILE_READER).h
+
+	$(CC) -c $(CSV_FILE_READER).cpp
