@@ -1,4 +1,5 @@
 #include <string>
+#include "../include/Animal.h"
 
 using namespace std;
 

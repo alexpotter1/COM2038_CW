@@ -1,4 +1,4 @@
-#include "include/Animal.h"
+#include "../include/Animal.h"
 using namespace std;
 
 string Animal::getBreed() {
