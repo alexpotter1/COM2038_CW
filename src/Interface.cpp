@@ -1,6 +1,8 @@
 #include "../include/Interface.h"
 #include <iostream>
 #include <typeinfo>
+#include <sstream>
+#include <locale>
 
 Interface::Interface() {
 	this->storageManager = StorageManager();
@@ -57,5 +59,41 @@ string Interface::search() {
 	//The paternal tree.
 
 	//Take the input from the user and split into 2 strings returning 2 strings with no whitespace and lowercase
+
+	string userInput;
+	string userInputToLower;
+	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
+	cin >> userInput;
+
+	locale loc;
+	for(string::size_type i=0; i<userInput.length(); ++i) {
+		userInputToLower = tolower(userInput[i], loc);
+	}
+
+	string userInputToLowerNoWhiteSpace = trim(userInputToLower);
+
+	stringstream ss(userInputToLowerNoWhiteSpace);
+	int i = 0;
+	string item;
+	string outputToSM[2];
+	while (getline(ss, item, ' ')) {
+		outputToSM[i] = item;
+		i++;
+	}
+
+	this->storageManager.search(outputToSM[0], outputToSM[1]);
+
 	return "";
+}
+
+string Interface::ltrim(string s, const char* t) {
+	return s.erase(0, s.find_first_not_of(t));
+}
+
+string Interface::rtrim(string s, const char* t) {
+	return s.erase(s.find_last_not_of(t) + 1);
+}
+
+string Interface::trim(string s, const char* t) {
+	return ltrim(rtrim(s, t), t);
 }
