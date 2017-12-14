@@ -3,6 +3,22 @@
 #include <fstream>
 #include <vector>
 using namespace std;
+// Dog, Animal: Derived, Base
+template<class Derived, class Base>
+vector<Base*> transformToBase(vector<Derived*> &derivedVec) {
+  class vector<Base*> baseVec;
+  typename vector<Derived*>::iterator iter;
+  Base* base;
+
+  for (iter = derivedVec.begin(); iter != derivedVec.end(); ++iter) {
+    base = dynamic_cast<Base*>(*iter);
+    if (base) {
+      baseVec.push_back(base);
+    }
+  }
+
+  return baseVec;
+}
 
 int main() {
 	ifstream dogsFile("../csv/Dogs.csv");
@@ -26,4 +42,11 @@ int main() {
 		Horse* horsePtr = horseVectsPtr->at(i);
 		cout << horsePtr->getName() << endl;
 	}
+
+  vector<Animal*> animalVects = transformToBase<Dog, Animal>(*dogVectsPtr);
+
+  StorageManager storageManager;
+  storageManager.addAnimalsToStorage(&animalVects);
+
+
 }

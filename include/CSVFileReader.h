@@ -1,8 +1,6 @@
 #include <fstream>
 #include <vector>
-#include "Dog.h"
-#include "Cat.h"
-#include "Horse.h"
+#include "StorageManager.h"
 using namespace std;
 
 class CSVFileReader {
