@@ -19,4 +19,7 @@ public:
 	string getColour() const;
 	string getDadName() const;
 	string getMumName() const;
+	virtual string getTailColour() const;
+	virtual double getHeight() const;
+	virtual string getEarType() const;
 };

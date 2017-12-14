@@ -48,6 +48,8 @@ string Interface::printAll() {
 		cout << setw(8) << mumName << endl;
 	}
 
+	return "";
+
 }
 
 string Interface::search() {
@@ -55,4 +57,5 @@ string Interface::search() {
 	//The paternal tree.
 
 	//Take the input from the user and split into 2 strings returning 2 strings with no whitespace and lowercase
+	return "";
 }

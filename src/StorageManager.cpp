@@ -107,17 +107,17 @@ vector<Horse>::const_iterator* StorageManager::getHorses() {
 }
 
 unsigned int StorageManager::getAnimalCount() {
-  return (unsigned int) (this->dogMap.count() + this->catMap.count() + this->horseMap.count())
+  return (unsigned int) (this->dogMap.size() + this->catMap.size() + this->horseMap.size());
 }
 
 unsigned int StorageManager::getDogCount() {
-  return (unsigned int) this->dogMap.count();
+  return (unsigned int) this->dogMap.size();
 }
 
 unsigned int StorageManager::getCatCount() {
-  return (unsigned int) this->catMap.count();
+  return (unsigned int) this->catMap.size();
 }
 
 unsigned int StorageManager::getHorseCount() {
-  return (unsigned int) this->horseMap.count();
+  return (unsigned int) this->horseMap.size();
 }

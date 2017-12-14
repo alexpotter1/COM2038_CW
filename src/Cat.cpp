@@ -10,14 +10,14 @@ Cat::Cat(string breed, string name, string colour, string dadName, string mumNam
            this->tailColour = tailColour;
          }
 
-string Cat::getEarType() {
+string Cat::getEarType() const {
   return this->earType;
 }
 
-double Cat::getHeight() {
+double Cat::getHeight() const {
   return this->height;
 }
 
-string Cat::getTailColour() {
+string Cat::getTailColour() const {
   return this->tailColour;
 }

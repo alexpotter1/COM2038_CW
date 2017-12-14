@@ -12,7 +12,7 @@ public:
   Dog(string breed, string name, string colour, string dadName, string mumName,
            string earType, double height, string tailColour);
   ~Dog() {};
-  string getEarType();
-  double getHeight();
-  string getTailColour();
+  string getEarType() const;
+  double getHeight() const;
+  string getTailColour() const;
 };

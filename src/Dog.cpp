@@ -10,14 +10,14 @@ Dog::Dog(string breed, string name, string colour, string dadName, string mumNam
            this->tailColour = tailColour;
          }
 
-string Dog::getEarType() {
+string Dog::getEarType() const {
   return this->earType;
 }
 
-double Dog::getHeight() {
+double Dog::getHeight() const {
   return this->height;
 }
 
-string Dog::getTailColour() {
+string Dog::getTailColour() const {
   return this->tailColour;
 }

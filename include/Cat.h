@@ -12,7 +12,7 @@ public:
   Cat(string breed, string name, string colour, string dadName, string mumName,
            string earType, double height, string tailColour);
   ~Cat() {};
-  string getEarType();
-  double getHeight();
-  string getTailColour();
+  string getEarType() const;
+  double getHeight() const;
+  string getTailColour() const;
 };
