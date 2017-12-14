@@ -2,7 +2,7 @@
 using namespace std;
 
 Cat::Cat(string breed, string name, string colour, string dadName, string mumName,
-         string earType, double height, string tailColour)
+         string earType, string height, string tailColour)
          : Animal(breed, name, colour, dadName, mumName)
          {
            this->earType = earType;
@@ -14,7 +14,11 @@ string Cat::getEarType() const {
   return this->earType;
 }
 
+<<<<<<< HEAD
 double Cat::getHeight() const {
+=======
+string Cat::getHeight() {
+>>>>>>> 7ea01a5... Changed type 'double's to 'string's in animal classes
   return this->height;
 }
 

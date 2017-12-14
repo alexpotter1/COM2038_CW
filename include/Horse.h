@@ -6,13 +6,13 @@ using namespace std;
 class Horse : public Animal {
 private:
   string earType;
-  double height;
+  string height;
   string tailColour;
 public:
   Horse(string breed, string name, string colour, string dadName, string mumName,
-           string earType, double height, string tailColour);
+           string earType, string height, string tailColour);
   ~Horse() {};
   string getEarType() const;
-  double getHeight() const;
+  string getHeight() const;
   string getTailColour() const;
 };
