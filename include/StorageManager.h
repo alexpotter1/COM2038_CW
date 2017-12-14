@@ -19,7 +19,8 @@ private:
 public:
   StorageManager();
   ~StorageManager() {};
-  bool addAnimalToStorage(Animal animal);
+  bool addAnimalToStorage(Animal* animal);
+  bool addAnimalsToStorage(vector< Animal* >* animals);
   vector<Animal>::const_iterator* getAnimals();
   vector<Dog>::const_iterator* getDogs();
   vector<Cat>::const_iterator* getCats();
@@ -28,4 +29,5 @@ public:
   unsigned int getDogCount();
   unsigned int getCatCount();
   unsigned int getHorseCount();
+  Animal* search(string type, string name);
 };
