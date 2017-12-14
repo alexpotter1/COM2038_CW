@@ -1,33 +1,76 @@
 #include "CSVFileReader.h"
-#include <iostream>
-#include <stdlib.h>
 #include <stdexcept>
 
 using namespace std;
 
 CSVFileReader::CSVFileReader() {}
 
-//For now make it only for Dog.
-vector<Dog*>* CSVFileReader::getAnimalVectsFromFile(ifstream* filePtr){
+vector<Dog*>* CSVFileReader::getDogs(ifstream* filePtr){
+	vector<Dog*>* dogVectsPtr = new vector<Dog*>();
 	if(filePtr->is_open()){		
-		cout << "For debbug: File is open" << endl;
 		string line;
-		vector<Dog*>* dogVectsPtr = new vector<Dog*>();
 		while(getline(*filePtr, line)){
-			cout << "For debbug: Another line" << endl;
-			vector<string>* attributesPtr = getAttributes(&line);
-			Dog *dogPtr = new Dog(attributesPtr->at(0),attributesPtr->at(1),attributesPtr->at(2),attributesPtr->at(6),attributesPtr->at(7),attributesPtr->at(3),attributesPtr->at(4),attributesPtr->at(5));
+			Dog *dogPtr = getDog(&line);
 			dogVectsPtr->push_back(dogPtr);
-			delete attributesPtr;
 		}
-		return dogVectsPtr;
 	}
 	else{
 		runtime_error("Error reading file.");		
 	}
+	return dogVectsPtr;
 }
 
-//can't use sstream because when there is "husky,," at the end, it will ignore the last null attribute.
+vector<Cat*>* CSVFileReader::getCats(ifstream* filePtr){
+	vector<Cat*>* catVectsPtr = new vector<Cat*>();
+	if(filePtr->is_open()){		
+		string line;
+		while(getline(*filePtr, line)){
+			Cat *catPtr = getCat(&line);
+			catVectsPtr->push_back(catPtr);
+		}
+	}
+	else{
+		runtime_error("Error reading file.");		
+	}
+	return catVectsPtr;
+}
+
+vector<Horse*>* CSVFileReader::getHorses(ifstream* filePtr){
+	vector<Horse*>* horseVectsPtr = new vector<Horse*>();
+	if(filePtr->is_open()){		
+		string line;
+		while(getline(*filePtr, line)){
+			Horse *horsePtr = getHorse(&line);
+			horseVectsPtr->push_back(horsePtr);
+		}
+	}
+	else{
+		runtime_error("Error reading file.");		
+	}
+	return horseVectsPtr;
+}
+
+Dog* CSVFileReader::getDog(string* linePtr){
+	vector<string>* attributesPtr = getAttributes(linePtr);
+	Dog *dogPtr = new Dog(attributesPtr->at(0),attributesPtr->at(1),attributesPtr->at(2),attributesPtr->at(6),attributesPtr->at(7),attributesPtr->at(3),attributesPtr->at(4),attributesPtr->at(5));
+	delete attributesPtr;
+	return dogPtr;
+}
+
+Cat* CSVFileReader::getCat(string* linePtr){
+	vector<string>* attributesPtr = getAttributes(linePtr);
+	Cat *catPtr = new Cat(attributesPtr->at(0),attributesPtr->at(1),attributesPtr->at(2),attributesPtr->at(6),attributesPtr->at(7),attributesPtr->at(3),attributesPtr->at(4),attributesPtr->at(5));
+	delete attributesPtr;
+	return catPtr;
+}
+
+Horse* CSVFileReader::getHorse(string* linePtr){
+	vector<string>* attributesPtr = getAttributes(linePtr);
+	Horse *horsePtr = new Horse(attributesPtr->at(0),attributesPtr->at(1),attributesPtr->at(2),attributesPtr->at(6),attributesPtr->at(7),attributesPtr->at(3),attributesPtr->at(4),attributesPtr->at(5));
+	delete attributesPtr;
+	return horsePtr;
+}
+
 vector<string>* CSVFileReader::getAttributes(string* linePtr){
 	int commaIndex;
 	vector<string>* attributesPtr = new vector<string>();
@@ -52,7 +95,7 @@ vector<string>* CSVFileReader::getAttributes(string* linePtr){
 				linePtr->erase(0, commaIndex + 1);	
 			}
 			else{
-				for(int f = 0; f < linePtr->size(); f++){
+				for(unsigned f = 0; f < linePtr->size(); f++){
 				attributesPtr->at(attributesPtr->size()-1) += linePtr->at(f);
 				}
 				linePtr->erase(0, linePtr->size());
