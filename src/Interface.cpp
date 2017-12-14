@@ -22,10 +22,8 @@ string Interface::printAll() {
 	cout << setw(8) << "\e[4mMom\e[0m" << endl;
 
 	cout << "---------------------------------------------------------------------------------" << endl;
-
-	it = this->storageManager.getAnimals();
 	
-	for(auto it = this->storageManager.getAnimals[0]; it != this->storageManager.getAnimals[1]; ++it) {
+	for(auto it = this->storageManager.getAnimals()[0]; it != this->storageManager.getAnimals()[1]; ++it) {
 
 		string groupType =  typeid(it).name();
 		string name = it->getName();
