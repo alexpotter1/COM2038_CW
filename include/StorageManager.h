@@ -17,7 +17,7 @@ private:
   vector<Horse> getHorsesAsVector();
 public:
   StorageManager();
-  ~StorageManager();
+  ~StorageManager() {};
   bool addAnimalToStorage(const Animal& animal);
   vector<Animal>::iterator getAnimals();
   vector<Dog>::iterator getDogs();
