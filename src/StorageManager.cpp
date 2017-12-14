@@ -9,6 +9,17 @@ StorageManager::StorageManager() {
 }
 
 bool StorageManager::addAnimalToStorage(const Animal& animal) {
-  cout << typeid(animal).name() << endl;
-  return true;
+  string animalType(typeid(animal).name()+1, typeid(animal).name().end());
+  if (animalType == "Dog") {
+    this->dogMap.insert({animal.getName(), animal});
+    return true;
+  } else if (animalType == "Cat") {
+    this->catMap.insert({animal.getName(), animal});
+    return true;
+  } else if (animalType == "Horse") {
+    this->horseMap.insert({animal.getName(), animal});
+    return true;
+  } else {
+    return false;
+  }
 }
