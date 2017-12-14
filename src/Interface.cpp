@@ -2,9 +2,13 @@
 #include <iostream>
 #include <typeinfo>
 
+Interface::Interface() {
+	this->storageManager = StorageManager();
+}
+
 string Interface::printAll() {
 
-	cout << "There are " << storageManager.getDogCount() << " dog(s), " << storageManager.getCatCount()  << " cat(s) and " << storageManager.getHorseCount << " horse(s) in the inventory, which are:" << endl << endl;
+	cout << "There are " << this->storageManager.getDogCount() << " dog(s), " << this->storageManager.getCatCount()  << " cat(s) and " << this->storageManager.getHorseCount() << " horse(s) in the inventory, which are:" << endl << endl;
 
 	cout << left;
 	cout << setw(8) << "\e[4mName\e[0m";
@@ -17,11 +21,11 @@ string Interface::printAll() {
 	cout << setw(8) << "\e[4mDad\e[0m";
 	cout << setw(8) << "\e[4mMom\e[0m" << endl;
 
-	cout << "---------------------------------------------------------------------------------" << end;
+	cout << "---------------------------------------------------------------------------------" << endl;
 
-	it = storageManager.getAnimals();
+	it = this->storageManager.getAnimals();
 	
-	for(auto it = storageManager.getAnimals[0]; it != storageManager.getAnimals[1]; ++it {
+	for(auto it = this->storageManager.getAnimals[0]; it != this->storageManager.getAnimals[1]; ++it) {
 
 		string groupType =  typeid(it).name();
 		string name = it->getName();
