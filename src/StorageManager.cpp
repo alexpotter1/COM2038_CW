@@ -8,21 +8,33 @@ StorageManager::StorageManager() {
   this->horseMap = map<string, Animal>();
 }
 
-bool StorageManager::addAnimalToStorage(Animal animal) {
-  string animalType = typeid(animal).name();
+bool StorageManager::addAnimalToStorage(Animal* animal) {
+  string animalType = typeid(*animal).name();
   animalType.erase(0, 1);
   if (animalType == "Dog") {
-    this->dogMap.insert({animal.getName(), animal});
+    this->dogMap.insert({animal->getName(), *animal});
     return true;
   } else if (animalType == "Horse") {
-    this->catMap.insert({animal.getName(), animal});
+    this->catMap.insert({animal->getName(), *animal});
     return true;
   } else if (animalType == "Horse") {
-    this->horseMap.insert({animal.getName(), animal});
+    this->horseMap.insert({animal->getName(), *animal});
     return true;
   } else {
     return false;
   }
+}
+
+bool StorageManager::addAnimalsToStorage(vector< Animal* >* animals) {
+  vector<Animal*>* animalVec = animals;
+
+  for(int i = 0; i < animalVec->size(); i++){
+    if (!addAnimalToStorage(animalVec->at(i))) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 vector<Animal> StorageManager::getAnimalsAsVector() {
