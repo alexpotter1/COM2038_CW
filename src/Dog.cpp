@@ -2,7 +2,7 @@
 using namespace std;
 
 Dog::Dog(string breed, string name, string colour, string dadName, string mumName,
-         string earType, double height, string tailColour)
+         string earType, string height, string tailColour)
          : Animal(breed, name, colour, dadName, mumName)
          {
            this->earType = earType;
@@ -14,7 +14,7 @@ string Dog::getEarType() {
   return this->earType;
 }
 
-double Dog::getHeight() {
+string Dog::getHeight() {
   return this->height;
 }
 
