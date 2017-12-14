@@ -1,10 +1,10 @@
-#include "Interface.h"
+#include "../include/Interface.h"
 #include <iostream>
 #include <typeinfo>
 
 string Interface::printAll() {
 
-	cout << "There are " << << " dog(s), " << << " cat(s) and " << " horse(s) in the inventory, which are:" << endl << endl;
+	cout << "There are " << storageManager.getDogCount() << " dog(s), " << storageManager.getCatCount()  << " cat(s) and " << storageManager.getHorseCount << " horse(s) in the inventory, which are:" << endl << endl;
 
 	cout << left;
 	cout << setw(8) << "\e[4mName\e[0m";
