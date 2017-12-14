@@ -12,7 +12,7 @@ public:
   Horse(string breed, string name, string colour, string dadName, string mumName,
            string earType, string height, string tailColour);
   ~Horse() {};
-  string getEarType();
-  string getHeight();
-  string getTailColour();
+  string getEarType() const;
+  string getHeight() const;
+  string getTailColour() const;
 };

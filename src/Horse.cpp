@@ -10,14 +10,14 @@ Horse::Horse(string breed, string name, string colour, string dadName, string mu
            this->tailColour = tailColour;
          }
 
-string Horse::getEarType() {
+string Horse::getEarType() const {
   return this->earType;
 }
 
-string Horse::getHeight() {
+string Horse::getHeight() const {
   return this->height;
 }
 
-string Horse::getTailColour() {
+string Horse::getTailColour() const {
   return this->tailColour;
 }
