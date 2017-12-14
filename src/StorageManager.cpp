@@ -121,3 +121,27 @@ unsigned int StorageManager::getCatCount() {
 unsigned int StorageManager::getHorseCount() {
   return (unsigned int) this->horseMap.size();
 }
+
+Animal* StorageManager::search(string type, string name) {
+  if (type == "d" || type == "a") {
+    if (this->dogMap.count(name)) {
+      return &(this->dogMap.find(name)->second);
+    }
+  }
+
+  if (type == "c" || type == "a") {
+    if (this->catMap.count(name)) {
+      return &(this->catMap.find(name)->second);
+    }
+  }
+
+  if (type == "h" || type == "a") {
+    if (this->horseMap.count(name)) {
+      return &(this->horseMap.find(name)->second);
+    }
+  }
+
+  // If not correct type, or if name doesn't exist, return null
+  // If using this function in another class, be careful to avoid null pointer dereferencing
+  return NULL;
+}
