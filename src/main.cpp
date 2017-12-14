@@ -1,10 +1,16 @@
-#include "../include/StorageManager.h"
+#include "../include/CSVFileReader.h"
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <stdlib.h>
+using namespace std;
 
 int main() {
-  Dog dog("1", "2", "3", "4", "5", "6", 7.0, "8");
-  Cat cat("1", "2", "3", "4", "5", "6", 7.1, "8");
-  StorageManager sman;
-  sman.addAnimalToStorage(dog);
-  sman.addAnimalToStorage(cat);
+	ifstream dogsFile("../csv/Dogs.csv");
+	CSVFileReader csvFileReader;
+	vector<Dog*>* dogVectsPtr = csvFileReader.getAnimalVectsFromFile(&dogsFile);
+	for(int i = 0; i < dogVectsPtr-> size(); i++){
+		Dog* dogPtr = dogVectsPtr->at(i);
+		cout << dogPtr->getName() << endl;
+	}
 }
