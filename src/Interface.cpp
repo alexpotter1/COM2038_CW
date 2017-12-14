@@ -8,7 +8,7 @@ Interface::Interface() {
 	this->storageManager = StorageManager();
 }
 
-string Interface::printAll() {
+void Interface::printAll() {
 
 	cout << "There are " << this->storageManager.getDogCount() << " dog(s), " << this->storageManager.getCatCount()  << " cat(s) and " << this->storageManager.getHorseCount() << " horse(s) in the inventory, which are:" << endl << endl;
 
@@ -50,11 +50,9 @@ string Interface::printAll() {
 		cout << setw(8) << mumName << endl;
 	}
 
-	return "";
-
 }
 
-string Interface::search() {
+void Interface::search() {
 	//TODO Sends input string to storage manager, if returned null, no animal with the search. Otherwise print out
 	//The paternal tree.
 
@@ -81,9 +79,29 @@ string Interface::search() {
 		i++;
 	}
 
-	this->storageManager.search(outputToSM[0], outputToSM[1]);
+	string paternalTree[3];
 
-	return "";
+	if(!(this->storageManager.search(outputToSM[0], outputToSM[1]) == NULL)) {
+		string name = storageManager.search(outputToSM[0], outputToSM[1])->getName();
+		paternalTree[0] = name;
+	}
+
+}
+
+string getInput() {
+
+}
+
+void getPaternalTree(string type, string name) {
+	string type = type;
+	string name = name;
+	string tree[3];
+	int i = 0
+	if(storageManager.search(type, name) != NULL) {
+		tree[i] = storageManager.search(type, name)->getName();
+		i++;
+		getPaternalTree(type, storageManager.search(type, name)->getDadName());
+	}
 }
 
 string Interface::ltrim(string s, const char* t) {
