@@ -1,10 +1,11 @@
 #include <fstream>
 #include <vector>
+#include "Dog.h"
 using namespace std;
 
 class CSVFileReader {
 public:
 	CSVFileReader();
-	void getAnimalVectsFromFile(ifstream* files);
+	vector<Dog*>* getAnimalVectsFromFile(ifstream* files);
 	vector<string>* getAttributes(string* linePtr);
 };

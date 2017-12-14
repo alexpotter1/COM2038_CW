@@ -1,36 +1,29 @@
 #include "CSVFileReader.h"
-#include "Dog.h"
 #include <iostream>
 #include <stdlib.h>
+#include <stdexcept>
 
 using namespace std;
 
 CSVFileReader::CSVFileReader() {}
 
 //For now make it only for Dog.
-void CSVFileReader::getAnimalVectsFromFile(ifstream* filePtr){
-	//Dog *dogPtr = new Dog();
+vector<Dog*>* CSVFileReader::getAnimalVectsFromFile(ifstream* filePtr){
 	if(filePtr->is_open()){		
 		cout << "For debbug: File is open" << endl;
 		string line;
+		vector<Dog*>* dogVectsPtr = new vector<Dog*>();
 		while(getline(*filePtr, line)){
 			cout << "For debbug: Another line" << endl;
 			vector<string>* attributesPtr = getAttributes(&line);
-			
-			cout << attributesPtr->at(0) << endl;
-			cout << attributesPtr->at(1) << endl;
-			cout << attributesPtr->at(2) << endl;
-			cout << attributesPtr->at(3) << endl;
-			cout << attributesPtr->at(4) << endl;
-			cout << attributesPtr->at(5) << endl;
-			cout << attributesPtr->at(6) << endl;
-			cout << attributesPtr->at(7) << endl;
-			
-			//Dog *dogPtr = new Dog(attributesPtr->at(0), attributesPtr->at(1), );
-			Dog *dogPtr = new Dog("breed", "name", "colour", "dad name", "mum name", "ear type", "height", "tail colour");
-			cout << dogPtr->getEarType();
+			Dog *dogPtr = new Dog(attributesPtr->at(0),attributesPtr->at(1),attributesPtr->at(2),attributesPtr->at(6),attributesPtr->at(7),attributesPtr->at(3),attributesPtr->at(4),attributesPtr->at(5));
+			dogVectsPtr->push_back(dogPtr);
 			delete attributesPtr;
 		}
+		return dogVectsPtr;
+	}
+	else{
+		runtime_error("Error reading file.");		
 	}
 }
 

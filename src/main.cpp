@@ -8,6 +8,9 @@ using namespace std;
 int main() {
 	ifstream dogsFile("../csv/Dogs.csv");
 	CSVFileReader csvFileReader;
-	
-	csvFileReader.getAnimalVectsFromFile(&dogsFile);
+	vector<Dog*>* dogVectsPtr = csvFileReader.getAnimalVectsFromFile(&dogsFile);
+	for(int i = 0; i < dogVectsPtr-> size(); i++){
+		Dog* dogPtr = dogVectsPtr->at(i);
+		cout << dogPtr->getName() << endl;
+	}
 }
