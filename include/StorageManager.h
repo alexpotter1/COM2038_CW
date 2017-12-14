@@ -1,5 +1,6 @@
 #include <map>
 #include <vector>
+#include <iterator>
 #include <iostream>
 #include "Cat.h"
 #include "Dog.h"
@@ -8,9 +9,9 @@ using namespace std;
 
 class StorageManager {
 private:
-  map<string, Dog> dogMap;
-  map<string, Cat> catMap;
-  map<string, Horse> horseMap;
+  map<string, Animal> dogMap;
+  map<string, Animal> catMap;
+  map<string, Animal> horseMap;
   vector<Animal> getAnimalsAsVector();
   vector<Dog> getDogsAsVector();
   vector<Cat> getCatsAsVector();
@@ -18,9 +19,9 @@ private:
 public:
   StorageManager();
   ~StorageManager() {};
-  bool addAnimalToStorage(const Animal& animal);
-  vector<Animal>::iterator getAnimals();
-  vector<Dog>::iterator getDogs();
-  vector<Cat>::iterator getCats();
-  vector<Horse>::iterator getHorses();
+  bool addAnimalToStorage(Animal animal);
+  vector<Animal>::const_iterator* getAnimals();
+  vector<Dog>::const_iterator* getDogs();
+  vector<Cat>::const_iterator* getCats();
+  vector<Horse>::const_iterator* getHorses();
 };
