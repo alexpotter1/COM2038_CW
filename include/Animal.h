@@ -12,7 +12,7 @@ private:
 
 public:
 	Animal(string breed, string name, string colour, string dadName, string mumName);
-	~Animal();
+	virtual ~Animal() = default;
 	string getBreed();
 	string getName();
 	string getColour();
