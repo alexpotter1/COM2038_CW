@@ -31,7 +31,7 @@ string Interface::printAll() {
 		string breed = it->getBreed();
 		string colour = it->getColour();
 		string earType = it->getEarType();
-		double height = it->getHeight();
+		string height = it->getHeight();
 		string tailColour = it->getTailColour();
 		string dadName = it->getDadName();
 		string mumName = it->getMumName();

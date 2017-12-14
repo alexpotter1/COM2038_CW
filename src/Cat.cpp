@@ -14,11 +14,7 @@ string Cat::getEarType() const {
   return this->earType;
 }
 
-<<<<<<< HEAD
-double Cat::getHeight() const {
-=======
-string Cat::getHeight() {
->>>>>>> 7ea01a5... Changed type 'double's to 'string's in animal classes
+string Cat::getHeight() const {
   return this->height;
 }
 

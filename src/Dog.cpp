@@ -14,11 +14,7 @@ string Dog::getEarType() const {
   return this->earType;
 }
 
-<<<<<<< HEAD
-double Dog::getHeight() const {
-=======
-string Dog::getHeight() {
->>>>>>> 7ea01a5... Changed type 'double's to 'string's in animal classes
+string Dog::getHeight() const {
   return this->height;
 }
 
