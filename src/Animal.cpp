@@ -9,22 +9,22 @@ Animal::Animal(string breed, string name, string colour, string dadName, string 
   this->mumName = mumName;
 }
 
-string Animal::getBreed() {
+string Animal::getBreed() const {
   return this->breed;
 }
 
-string Animal::getName() {
+string Animal::getName() const {
   return this->name;
 }
 
-string Animal::getColour() {
+string Animal::getColour() const {
   return this->colour;
 }
 
-string Animal::getDadName() {
+string Animal::getDadName() const {
   return this->dadName;
 }
 
-string Animal::getMumName() {
+string Animal::getMumName() const {
   return this->mumName;
 }

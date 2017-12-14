@@ -14,9 +14,9 @@ private:
 public:
 	Animal(string breed, string name, string colour, string dadName, string mumName);
 	virtual ~Animal() = default;
-	string getBreed();
-	string getName();
-	string getColour();
-	string getDadName();
-	string getMumName();
+	string getBreed() const;
+	string getName() const;
+	string getColour() const;
+	string getDadName() const;
+	string getMumName() const;
 };
