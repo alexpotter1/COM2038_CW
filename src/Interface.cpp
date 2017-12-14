@@ -1,48 +1,31 @@
 #include "Interface.h"
 #include <iostream>
+#include <typeinfo>
 
 string Interface::printAll() {
-	//Some way of getting number of rows in each file
-	//Some way of getting number of files (vector pointer
-	storageManager.getNumberOfRows()
-
-	cout << "There are " << storageManager.getNumerOfRows() << " " << storageManagerP -> breed
-
-	for( int i = 0; i < numberOfFiles; i++ ) {
-		for( int j = 0; j < numberOfRows; j++) {
-			string name = storageManagerP -> object.name() -> Name
-			string group = storageManagerP -> Group
-			string breed = storageManagerP -> Breed 
-			string colour = storageManagerP -> Colour
-			string earType = storageManagerP -> EarType
-			string height = storageManagerP -> Height
-			string tailColour = storageManagerP -> TailColour
-			string dad = storageManagerP -> Dad
-			string mom = storageManagerP -> Mom
-
-			cout << left;
-			cout << setw(8) << name << "";
-			cout << setw(8) << group << "";
-			cout << setw(8) << breed << "";
-			cout << setw(8) << colour << "";
-			cout << setw(8) << height << "";
-			cout << setw(8) << tailColour << "";
-			cout << setw(8) << dad << "";
-			cout << setw(8) << mom << "";
-		}	
-	}
-//NEW CODE
 
 	cout << "There are " << << " dog(s), " << << " cat(s) and " << " horse(s) in the inventory, which are:" << endl << endl;
 
-	cout << 
+	cout << left;
+	cout << setw(8) << "\e[4mName\e[0m";
+	cout << setw(8) << "\e[4mGroup\e[0m";
+	cout << setw(8) << "\e[4mBreed\e[0m";
+	cout << setw(8) << "\e[4mColour\e[0m";
+	cout << setw(8) << "\e[4mEar Type\e[0m";
+	cout << setw(8) << "\e[4mHeight\e[0m";
+	cout << setw(8) << "\e[4mTail Colour\e[0m";
+	cout << setw(8) << "\e[4mDad\e[0m";
+	cout << setw(8) << "\e[4mMom\e[0m" << endl;
+
+	cout << "---------------------------------------------------------------------------------" << end;
 
 	it = storageManager.getAnimals();
 	
 	for(auto it = storageManager.getAnimals[0]; it != storageManager.getAnimals[1]; ++it {
 
+		string groupType =  typeid(it).name();
 		string name = it->getName();
-		string group = it->
+		string group = groupType.erase(0,1);
 		string breed = it->getBreed();
 		string colour = it->getColour();
 		string earType = it->getEarType();
