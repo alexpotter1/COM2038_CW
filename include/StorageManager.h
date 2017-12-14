@@ -28,4 +28,5 @@ public:
   unsigned int getDogCount();
   unsigned int getCatCount();
   unsigned int getHorseCount();
+  Animal* search(string type, string name);
 };
