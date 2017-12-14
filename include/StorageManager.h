@@ -1,13 +1,16 @@
 #include <map>
 #include <vector>
 #include <iostream>
+#include "Cat.h"
+#include "Dog.h"
+#include "Horse.h"
 using namespace std;
 
 class StorageManager {
 private:
-  map dogMap;
-  map catMap;
-  map horseMap;
+  map<string, Dog> dogMap;
+  map<string, Cat> catMap;
+  map<string, Horse> horseMap;
   vector<Animal> getAnimalsAsVector();
   vector<Dog> getDogsAsVector();
   vector<Cat> getCatsAsVector();
