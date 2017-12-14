@@ -5,7 +5,7 @@ string Dog::getEarType() {
   return this->earType;
 }
 
-double Dog::getHeight() {
+string Dog::getHeight() {
   return this->height;
 }
 

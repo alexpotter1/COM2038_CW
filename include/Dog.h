@@ -6,11 +6,11 @@ using namespace std;
 class Dog : public Animal {
 private:
   string earType;
-  double height;
+  string height;
   string tailColour;
 public:
   Dog(string breed, string name, string colour, string dadName, string mumName,
-           string earType, double height, string tailColour)
+           string earType, string height, string tailColour)
            : Animal(breed, name, colour, dadName, mumName)
            {
              this->earType = earType;
@@ -19,6 +19,6 @@ public:
            }
   ~Dog();
   string getEarType();
-  double getHeight();
+  string getHeight();
   string getTailColour();
 };
