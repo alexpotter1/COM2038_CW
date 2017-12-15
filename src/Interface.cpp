@@ -110,24 +110,24 @@ void getInput() {
 		i++;
 	}
 
-	getPaternalTree(outputToSM[0], outputToSM[1]);
+	this->getPaternalTree(outputToSM[0], outputToSM[1]);
 
 }
 
 void getPaternalTree(string type, string name) {
-	if(storageManager.search(type, name) != NULL) {
-			this->paternalTree[counter] = storageManager.search(type, name)->getName();
+	if(this->storageManager.search(type, name) != NULL) {
+			this->paternalTree[counter] = this->storageManager.search(type, name)->getName();
 			this->counter++;
-			getPaternalTree(type, storageManager.search(type, name)->getDadName());
-	} else if(counter == 0){
-		counter = 0;
-		cout << paternalTree[0] << " <-- [END]" << endl;
-	} else if(counter == 1) {
-		counter = 0
-		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- [END]" << endl;
+			getPaternalTree(type, this->storageManager.search(type, name)->getDadName());
+	} else if(this->counter == 0){
+		this->counter = 0;
+		cout << this->paternalTree[0] << " <-- [END]" << endl;
+	} else if(this->counter == 1) {
+		this->counter = 0
+		cout << this->paternalTree[0] << " <-- " << this->paternalTree[1] << " <-- [END]" << endl;
 	} else if(counter == 2) {
 		counter = 0;
-		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- " << paternalTree[2] << " <-- [END]" << endl;
+		cout << this->paternalTree[0] << " <-- " << this->paternalTree[1] << " <-- " << this->paternalTree[2] << " <-- [END]" << endl;
 	} else {
 		if(type == d) {
 			cout << name << " was not found in the inventory within the \e[1mdogs\e[0m" << endl;
