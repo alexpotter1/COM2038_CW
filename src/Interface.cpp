@@ -52,7 +52,7 @@ void Interface::printAll() {
 
 }
 
-void Interface::search() {
+/*void Interface::search() {
 	//TODO Sends input string to storage manager, if returned null, no animal with the search. Otherwise print out
 	//The paternal tree.
 
@@ -86,9 +86,31 @@ void Interface::search() {
 		paternalTree[0] = name;
 	}
 
-}
+}*/
 
 string getInput() {
+	string userInput;
+	string userInputToLower;
+	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
+	cin >> userInput;
+
+	locale loc;
+	for(string::size_type i=0; i<userInput.length(); ++i) {
+		userInputToLower = tolower(userInput[i], loc);
+	}
+
+	string userInputToLowerNoWhiteSpace = trim(userInputToLower);
+
+	stringstream ss(userInputToLowerNoWhiteSpace);
+	int i = 0;
+	string item;
+	string outputToSM[2];
+	while (getline(ss, item, ' ')) {
+		outputToSM[i] = item;
+		i++;
+	}
+
+	getPaternalTree(outputToSM[0], outputToSM[1]);
 
 }
 
@@ -98,10 +120,11 @@ void getPaternalTree(string type, string name) {
 	string tree[3];
 	int i = 0
 	if(storageManager.search(type, name) != NULL) {
-		tree[i] = storageManager.search(type, name)->getName();
-		i++;
-		getPaternalTree(type, storageManager.search(type, name)->getDadName());
+			tree[i] = storageManager.search(type, name)->getName();
+			i++;
+			getPaternalTree(type, storageManager.search(type, name)->getDadName());
 	}
+
 }
 
 string Interface::ltrim(string s, const char* t) {
