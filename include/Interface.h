@@ -12,9 +12,9 @@ public:
 	string rtrim(string s, const char* t = " \t\n\r\f\v");
 	string trim(string s, const char* t = " \t\n\r\f\v");
 	void getInput();
-	void getPaternalTree();
+	void getPaternalTree(string type, string name);
 private:
 	StorageManager storageManager;
 	string paternalTree[3];
-	int counter = -1;
+	int counter;
 };
