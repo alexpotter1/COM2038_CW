@@ -1,4 +1,4 @@
-#include "CSVFileReader.h"
+#include "../include/CSVFileReader.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -21,9 +21,9 @@ vector<Base*> transformToBase(vector<Derived*> &derivedVec) {
 }
 
 int main() {
-	ifstream dogsFile("../csv/Dogs.csv");
-	ifstream catsFile("../csv/Cats.csv");
-	ifstream horsesFile("../csv/Horses.csv");
+	ifstream dogsFile("csv/Dogs.csv");
+	ifstream catsFile("csv/Cats.csv");
+	ifstream horsesFile("csv/Horses.csv");
 	CSVFileReader csvFileReader;
 	vector<Dog*>* dogVectsPtr = csvFileReader.getDogs(&dogsFile);
 	vector<Cat*>* catVectsPtr = csvFileReader.getCats(&catsFile);

@@ -14,7 +14,7 @@ bool StorageManager::addAnimalToStorage(Animal* animal) {
   if (animalType == "Dog") {
     this->dogMap.insert({animal->getName(), *animal});
     return true;
-  } else if (animalType == "Horse") {
+  } else if (animalType == "Cat") {
     this->catMap.insert({animal->getName(), *animal});
     return true;
   } else if (animalType == "Horse") {
