@@ -7,7 +7,7 @@ CSVFileReader::CSVFileReader() {}
 
 vector<Dog*>* CSVFileReader::getDogs(ifstream* filePtr){
 	vector<Dog*>* dogVectsPtr = new vector<Dog*>();
-	if(filePtr->is_open()){		
+	if(filePtr->is_open()){
 		string line;
 		while(getline(*filePtr, line)){
 			Dog *dogPtr = getDog(&line);
@@ -15,14 +15,14 @@ vector<Dog*>* CSVFileReader::getDogs(ifstream* filePtr){
 		}
 	}
 	else{
-		runtime_error("Error reading file.");		
+		throw runtime_error("Error reading file.");
 	}
 	return dogVectsPtr;
 }
 
 vector<Cat*>* CSVFileReader::getCats(ifstream* filePtr){
 	vector<Cat*>* catVectsPtr = new vector<Cat*>();
-	if(filePtr->is_open()){		
+	if(filePtr->is_open()){
 		string line;
 		while(getline(*filePtr, line)){
 			Cat *catPtr = getCat(&line);
@@ -30,14 +30,14 @@ vector<Cat*>* CSVFileReader::getCats(ifstream* filePtr){
 		}
 	}
 	else{
-		runtime_error("Error reading file.");		
+		throw runtime_error("Error reading file.");
 	}
 	return catVectsPtr;
 }
 
 vector<Horse*>* CSVFileReader::getHorses(ifstream* filePtr){
 	vector<Horse*>* horseVectsPtr = new vector<Horse*>();
-	if(filePtr->is_open()){		
+	if(filePtr->is_open()){
 		string line;
 		while(getline(*filePtr, line)){
 			Horse *horsePtr = getHorse(&line);
@@ -45,7 +45,7 @@ vector<Horse*>* CSVFileReader::getHorses(ifstream* filePtr){
 		}
 	}
 	else{
-		runtime_error("Error reading file.");		
+		throw runtime_error("Error reading file.");
 	}
 	return horseVectsPtr;
 }
@@ -85,14 +85,14 @@ vector<string>* CSVFileReader::getAttributes(string* linePtr){
 			attributesPtr->push_back("");
 			linePtr->erase(0,1);
 		}
-		
+
 		else{
 			attributesPtr->push_back("");
 			if(commaIndex > -1){
 				for(int f = 0; f < commaIndex; f++){
 				attributesPtr->at(attributesPtr->size()-1) += linePtr->at(f);
 				}
-				linePtr->erase(0, commaIndex + 1);	
+				linePtr->erase(0, commaIndex + 1);
 			}
 			else{
 				for(unsigned f = 0; f < linePtr->size(); f++){
