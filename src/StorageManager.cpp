@@ -92,12 +92,11 @@ vector<Horse> StorageManager::getHorsesAsVector() {
   return horseVector;
 }
 
-vector<Animal>::const_iterator* StorageManager::getAnimals() {
-  vector<Animal>::const_iterator* beginEndIterators = new vector<Animal>::const_iterator[2];
-  vector<Animal> animals = this->getAnimalsAsVector();
-  beginEndIterators[0] = animals.begin();
-  beginEndIterators[1] = animals.end();
-  return beginEndIterators;
+AnimalIterator<Animal>* StorageManager::getAnimals() {
+  AnimalIterator<Animal>* animalIter = new AnimalIterator<Animal>;
+  animalIter->iter_begin = this->getAnimalsAsVector().begin();
+  animalIter->iter_end = this->getAnimalsAsVector().end();
+  return animalIter;
 }
 
 AnimalIterator<Animal>* StorageManager::getDogs() {
@@ -109,15 +108,15 @@ AnimalIterator<Animal>* StorageManager::getDogs() {
 
 AnimalIterator<Animal>* StorageManager::getCats() {
   AnimalIterator<Animal>* animalIter = new AnimalIterator<Animal>;
-  animalIter->iter_begin = this->getDogsAsVector().begin();
-  animalIter->iter_end = this->getDogsAsVector().end();
+  animalIter->iter_begin = this->getCatsAsVector().begin();
+  animalIter->iter_end = this->getCatsAsVector().end();
   return animalIter;
 }
 
 AnimalIterator<Animal>* StorageManager::getHorses() {
   AnimalIterator<Animal>* animalIter = new AnimalIterator<Animal>;
-  animalIter->iter_begin = this->getDogsAsVector().begin();
-  animalIter->iter_end = this->getDogsAsVector().end();
+  animalIter->iter_begin = this->getHorsesAsVector().begin();
+  animalIter->iter_end = this->getHorsesAsVector().end();
   return animalIter;
 }
 

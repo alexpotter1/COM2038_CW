@@ -28,10 +28,10 @@ public:
   ~StorageManager();
   bool addAnimalToStorage(Animal* animal);
   bool addAnimalsToStorage(vector< Animal* >* animals);
-  vector<Animal>::const_iterator* getAnimals();
+  AnimalIterator<Animal>* getAnimals();
   AnimalIterator<Animal>* getDogs();
-  vector<Cat>::const_iterator* getCats();
-  vector<Horse>::const_iterator* getHorses();
+  AnimalIterator<Animal>* getCats();
+  AnimalIterator<Animal>* getHorses();
   unsigned int getAnimalCount();
   unsigned int getDogCount();
   unsigned int getCatCount();
