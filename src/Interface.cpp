@@ -88,7 +88,7 @@ void Interface::printAll() {
 
 }*/
 
-string getInput() {
+void getInput() {
 	string userInput;
 	string userInputToLower;
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
@@ -115,14 +115,29 @@ string getInput() {
 }
 
 void getPaternalTree(string type, string name) {
-	string type = type;
-	string name = name;
-	string tree[3];
-	int i = 0
 	if(storageManager.search(type, name) != NULL) {
-			tree[i] = storageManager.search(type, name)->getName();
-			i++;
+			this->paternalTree[counter] = storageManager.search(type, name)->getName();
+			this->counter++;
 			getPaternalTree(type, storageManager.search(type, name)->getDadName());
+	} else if(counter == 0){
+		counter = 0;
+		cout << paternalTree[0] << " <-- [END]" << endl;
+	} else if(counter == 1) {
+		counter = 0
+		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- [END]" << endl;
+	} else if(counter == 2) {
+		counter = 0;
+		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- " << paternalTree[2] << " <-- [END]" << endl;
+	} else {
+		if(type == d) {
+			cout << name << " was not found in the inventory within the \e[1mdogs\e[0m" << endl;
+		} else if(type == c) {
+			cout << name << " was not found in the inventory within the \e[1mcats\e[0m" << endl;
+		} else if(type == h) {
+			cout << name << " was not found in the inventory within the \e[1mhorses\e[0m" << endl;
+		} else {
+			cout << name << " was not found in the inventory within the selected inventory" << endl;
+		}
 	}
 
 }
