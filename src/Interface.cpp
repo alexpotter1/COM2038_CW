@@ -6,9 +6,10 @@
 
 Interface::Interface() {
 	this->storageManager = StorageManager();
+	this->counter = -1;
 }
 
-string Interface::printAll() {
+void Interface::printAll() {
 
 	cout << "There are " << this->storageManager.getDogCount() << " dog(s), " << this->storageManager.getCatCount()  << " cat(s) and " << this->storageManager.getHorseCount() << " horse(s) in the inventory, which are:" << endl << endl;
 
@@ -50,11 +51,9 @@ string Interface::printAll() {
 		cout << setw(8) << mumName << endl;
 	}
 
-	return "";
-
 }
 
-string Interface::search() {
+/*void Interface::search() {
 	//TODO Sends input string to storage manager, if returned null, no animal with the search. Otherwise print out
 	//The paternal tree.
 
@@ -81,9 +80,67 @@ string Interface::search() {
 		i++;
 	}
 
-	this->storageManager.search(outputToSM[0], outputToSM[1]);
+	string paternalTree[3];
 
-	return "";
+	if(!(this->storageManager.search(outputToSM[0], outputToSM[1]) == NULL)) {
+		string name = storageManager.search(outputToSM[0], outputToSM[1])->getName();
+		paternalTree[0] = name;
+	}
+
+}*/
+
+void Interface::getInput() {
+	string userInput;
+	string userInputToLower;
+	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
+	cin >> userInput;
+
+	locale loc;
+	for(string::size_type i=0; i<userInput.length(); ++i) {
+		userInputToLower = tolower(userInput[i], loc);
+	}
+
+	string userInputToLowerNoWhiteSpace = trim(userInputToLower);
+
+	stringstream ss(userInputToLowerNoWhiteSpace);
+	int i = 0;
+	string item;
+	string outputToSM[2];
+	while (getline(ss, item, ' ')) {
+		outputToSM[i] = item;
+		i++;
+	}
+
+	getPaternalTree(outputToSM[0], outputToSM[1]);
+
+}
+
+void Interface::getPaternalTree(string type, string name) {
+	if(storageManager.search(type, name) != NULL) {
+			paternalTree[counter] = storageManager.search(type, name)->getName();
+			counter++;
+			getPaternalTree(type, storageManager.search(type, name)->getDadName());
+	} else if(counter == 0){
+		counter = 0;
+		cout << paternalTree[0] << " <-- [END]" << endl;
+	} else if(counter == 1) {
+		counter = 0;
+		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- [END]" << endl;
+	} else if(counter == 2) {
+		counter = 0;
+		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- " << paternalTree[2] << " <-- [END]" << endl;
+	} else {
+		if(type == "d") {
+			cout << name << " was not found in the inventory within the \e[1mdogs\e[0m" << endl;
+		} else if(type == "c") {
+			cout << name << " was not found in the inventory within the \e[1mcats\e[0m" << endl;
+		} else if(type == "h") {
+			cout << name << " was not found in the inventory within the \e[1mhorses\e[0m" << endl;
+		} else {
+			cout << name << " was not found in the inventory within the selected inventory" << endl;
+		}
+	}
+
 }
 
 string Interface::ltrim(string s, const char* t) {
