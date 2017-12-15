@@ -4,12 +4,12 @@ SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 
-CC_VERSION = c++14 
+CC_VERSION = c++14
 
 CC = g++
 CFLAGS = -g -Wall -std=$(CC_VERSION) -I$(INCDIR)
 LINKER = g++ -o
-LFLAGS = -Wall -I$(INCDIR) -lm
+LFLAGS = -Wall -I$(INCDIR) -lm -fsanitize=address -O3 -fno-omit-frame-pointer
 
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES := $(wildcard $(INCDIR)/*.h)

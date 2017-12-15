@@ -43,4 +43,10 @@ int main() {
   cout << "Dogs: " << storageManager.getDogCount() << endl;
   cout << "Cats: " << storageManager.getCatCount() << endl;
   cout << "Horses: " << storageManager.getHorseCount() << endl;
+
+  auto it = storageManager.getDogs()->iter_begin;
+  for (int i = 0; i < storageManager.getDogCount(); i++) {
+    cout << "name: " << it->getName() << endl;
+    it++;
+  }
 }
