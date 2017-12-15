@@ -9,7 +9,7 @@ CC_VERSION = c++14
 CC = g++
 CFLAGS = -g -Wall -std=$(CC_VERSION) -I$(INCDIR)
 LINKER = g++ -o
-LFLAGS = -Wall -I$(INCDIR) -lm -fsanitize=address -O3 -fno-omit-frame-pointer
+LFLAGS = -Wall -I$(INCDIR) -lm -O3
 
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES := $(wildcard $(INCDIR)/*.h)

@@ -107,22 +107,18 @@ AnimalIterator<Animal>* StorageManager::getDogs() {
   return animalIter;
 }
 
-vector<Cat>::const_iterator* StorageManager::getCats() {
-  vector<Cat>::const_iterator* beginEndIterators = new vector<Cat>::const_iterator[2];
-  vector<Cat> cats = this->getCatsAsVector();
-  beginEndIterators[0] = cats.begin();
-  beginEndIterators[1] = cats.end();
-
-  return beginEndIterators;
+AnimalIterator<Animal>* StorageManager::getCats() {
+  AnimalIterator<Animal>* animalIter = new AnimalIterator<Animal>;
+  animalIter->iter_begin = this->getDogsAsVector().begin();
+  animalIter->iter_end = this->getDogsAsVector().end();
+  return animalIter;
 }
 
-vector<Horse>::const_iterator* StorageManager::getHorses() {
-  vector<Horse>::const_iterator* beginEndIterators = new vector<Horse>::const_iterator[2];
-  vector<Horse> horses = this->getHorsesAsVector();
-  beginEndIterators[0] = horses.begin();
-  beginEndIterators[1] = horses.end();
-
-  return beginEndIterators;
+AnimalIterator<Animal>* StorageManager::getHorses() {
+  AnimalIterator<Animal>* animalIter = new AnimalIterator<Animal>;
+  animalIter->iter_begin = this->getDogsAsVector().begin();
+  animalIter->iter_end = this->getDogsAsVector().end();
+  return animalIter;
 }
 
 unsigned int StorageManager::getAnimalCount() {
