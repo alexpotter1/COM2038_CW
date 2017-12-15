@@ -43,10 +43,19 @@ int main() {
 		cout << horsePtr->getName() << endl;
 	}
 
-  vector<Animal*> animalVects = transformToBase<Dog, Animal>(*dogVectsPtr);
+  vector<Animal*> animalVects1 = transformToBase<Dog, Animal>(*dogVectsPtr);
+  vector<Animal*> animalVects2 = transformToBase<Cat, Animal>(*catVectsPtr);
+  vector<Animal*> animalVects3 = transformToBase<Horse, Animal>(*horseVectsPtr);
+
+  animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
+  animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
 
   StorageManager storageManager;
-  storageManager.addAnimalsToStorage(&animalVects);
+  if (storageManager.addAnimalsToStorage(&animalVects1)) {
+    cout << "loaded animals to storage" << endl;
+  }
 
-
+  cout << "Dogs: " << storageManager.getDogCount() << endl;
+  cout << "Cats: " << storageManager.getCatCount() << endl;
+  cout << "Horses: " << storageManager.getHorseCount() << endl;
 }

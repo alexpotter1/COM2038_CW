@@ -28,8 +28,8 @@ bool StorageManager::addAnimalToStorage(Animal* animal) {
 bool StorageManager::addAnimalsToStorage(vector< Animal* >* animals) {
   vector<Animal*>* animalVec = animals;
 
-  for(int i = 0; i < animalVec->size(); i++){
-    if (!addAnimalToStorage(animalVec->at(i))) {
+  for(int i = 0; i < animals->size(); i++){
+    if (!addAnimalToStorage(animals->at(i))) {
       return false;
     }
   }
