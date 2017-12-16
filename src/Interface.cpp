@@ -28,25 +28,27 @@ string Interface::printAll() {
 	auto it = this->storageManager.getDogs()->iter_begin;
 	for(int i = 0; i < this->storageManager.getDogCount(); i++) {
 
-		string groupType =  typeid(*it).name();
-		string name = it->getName();
+		const Dog dog = dynamic_cast<const Dog&>(*it);
+
+		string groupType =  typeid(dog).name();
+		string name = dog.getName();
 		string group = groupType.erase(0,1);
-		string breed = it->getBreed();
-		string colour = it->getColour();
-		//string earType = it->getEarType();
-		//string height = it->getHeight();
-		//string tailColour = it->getTailColour();
-		string dadName = it->getDadName();
-		string mumName = it->getMumName();
+		string breed = dog.getBreed();
+		string colour = dog.getColour();
+		string earType = dog.getEarType();
+		string height = dog.getHeight();
+		string tailColour = dog.getTailColour();
+		string dadName = dog.getDadName();
+		string mumName = dog.getMumName();
 
 		cout << left;
 		cout << setw(8) << name;
 		cout << setw(8) << group;
 		cout << setw(8) << breed;
 		cout << setw(8) << colour;
-		//cout << setw(8) << earType;
-		//cout << setw(8) << height;
-		//cout << setw(8) << tailColour;
+		cout << setw(8) << earType;
+		cout << setw(8) << height;
+		cout << setw(8) << tailColour;
 		cout << setw(8) << dadName;
 		cout << setw(8) << mumName << endl;
 

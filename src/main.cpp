@@ -51,9 +51,13 @@ int main() {
   cout << "Cats: " << storageManager.getCatCount() << endl;
   cout << "Horses: " << storageManager.getHorseCount() << endl;
 
-  auto it = storageManager.getDogs()->iter_begin;
+  vector<Dog>::const_iterator it = storageManager.getDogs()->iter_begin;
   for (int i = 0; i < storageManager.getDogCount(); i++) {
-    cout << "name: " << it->getName() << endl;
+
+		const Dog dog = dynamic_cast<const Dog&>(*it);
+
+    cout << "name: " << dog.getName() << endl;
+		//cout << "tail colour: " << it->getTailColour() << endl;
     it++;
   }
 
