@@ -8,23 +8,6 @@ The objects are then saved in memory. The class provides methods to retrieve vec
 pointers to these objects.*/
 CSVFileReader::CSVFileReader() {}
 
-vector<Animal*>* CSVFileReader::getAnimals(){
-	vector<Animal*>* animalsVectPtr = new vector<Animal*>();
-	ifstream dogsFile("csv/Dogs.csv");
-	ifstream catsFile("csv/Cats.csv");
-	ifstream horsesFile("csv/Horses.csv");
-	vector<Dog*>* dogsVectPtr = getDogs(&dogsFile);
-	vector<Cat*>* catsVectPtr = getCats(&catsFile);
-	vector<Horse*>* horsesVectPtr = getHorses(&horsesFile);
-	vector<Animal*> dogsUpcastedVect = transformToBase<Dog, Animal>(*dogsVectPtr);
-	vector<Animal*> catsUpcastedVect = transformToBase<Cat, Animal>(*catsVectPtr);
-	vector<Animal*> horsesUpcastedVect = transformToBase<Horse, Animal>(*horsesVectPtr);
-	animalsVectPtr->insert(animalsVectPtr->end(), dogsUpcastedVect.begin(), dogsUpcastedVect.end());
-	animalsVectPtr->insert(animalsVectPtr->end(), catsUpcastedVect.begin(), catsUpcastedVect.end());
-	animalsVectPtr->insert(animalsVectPtr->end(), horsesUpcastedVect.begin(), horsesUpcastedVect.end());
-	return animalsVectPtr;
-}
-
 /*Reads a file which is pointed to by a pointer. Then the function creates a pointer to the 
 vector which stores pointers to Dog objects. The Dog objects have been created using attributes 
 which have been read from the file. The function returns the pointer to the vector of pointers to 
