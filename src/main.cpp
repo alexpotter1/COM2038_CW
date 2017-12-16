@@ -29,17 +29,23 @@ int main() {
 		cout << horsePtr->getName() << endl;
 	}
 
-  vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
-  vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
-  vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
+  //vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
+  //vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
+  //vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
 
-  animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
-  animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
+  //animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
+  //animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
 
   StorageManager storageManager;
-  if (storageManager.addAnimalsToStorage(&animalVects1)) {
-    cout << "loaded animals to storage" << endl;
+  if (storageManager.addDogsToStorage(dogVectsPtr)) {
+    cout << "loaded dogs to storage" << endl;
   }
+	if (storageManager.addCatsToStorage(catVectsPtr)) {
+		cout << "loaded cats to storage" << endl;
+	}
+	if (storageManager.addHorsesToStorage(horseVectsPtr)) {
+		cout << "loaded horses to storage" << endl;
+	}
 
   cout << "Dogs: " << storageManager.getDogCount() << endl;
   cout << "Cats: " << storageManager.getCatCount() << endl;

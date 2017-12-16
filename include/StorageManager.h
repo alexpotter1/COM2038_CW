@@ -16,23 +16,22 @@ struct AnimalIterator {
 
 class StorageManager {
 private:
-  map<string, Animal> dogMap;
-  map<string, Animal> catMap;
-  map<string, Animal> horseMap;
-  vector<Animal> getAnimalsAsVector();
-  vector<Animal> getDogsAsVector();
+  map<string, Dog> dogMap;
+  map<string, Cat> catMap;
+  map<string, Horse> horseMap;
+  vector<Dog> getDogsAsVector();
   vector<Cat> getCatsAsVector();
   vector<Horse> getHorsesAsVector();
 
 public:
   StorageManager();
   ~StorageManager();
-  bool addAnimalToStorage(Animal* animal);
-  bool addAnimalsToStorage(vector< Animal* >* animals);
-  AnimalIterator<Animal>* getAnimals();
-  AnimalIterator<Animal>* getDogs();
-  AnimalIterator<Animal>* getCats();
-  AnimalIterator<Animal>* getHorses();
+  bool addDogsToStorage(vector<Dog*>* dogs);
+  bool addCatsToStorage(vector<Cat*>* cats);
+  bool addHorsesToStorage(vector<Horse*>* horses);
+  AnimalIterator<Dog>* getDogs();
+  AnimalIterator<Cat>* getCats();
+  AnimalIterator<Horse>* getHorses();
   unsigned int getAnimalCount();
   unsigned int getDogCount();
   unsigned int getCatCount();

@@ -17,18 +17,18 @@ string Interface::printAll() {
 	cout << setw(8) << "\e[4mGroup\e[0m";
 	cout << setw(8) << "\e[4mBreed\e[0m";
 	cout << setw(8) << "\e[4mColour\e[0m";
-	//cout << setw(8) << "\e[4mEar Type\e[0m";
-	//cout << setw(8) << "\e[4mHeight\e[0m";
-	//cout << setw(8) << "\e[4mTail Colour\e[0m";
+	cout << setw(8) << "\e[4mEar Type\e[0m";
+	cout << setw(8) << "\e[4mHeight\e[0m";
+	cout << setw(8) << "\e[4mTail Colour\e[0m";
 	cout << setw(8) << "\e[4mDad\e[0m";
 	cout << setw(8) << "\e[4mMom\e[0m" << endl;
 
 	cout << "---------------------------------------------------------------------------------" << endl;
 
-	auto it = this->storageManager.getAnimals()->iter_begin;
-	for(int i = 0; i < this->storageManager.getAnimalCount(); i++) {
+	auto it = this->storageManager.getDogs()->iter_begin;
+	for(int i = 0; i < this->storageManager.getDogCount(); i++) {
 
-		string groupType =  typeid(it).name();
+		string groupType =  typeid(*it).name();
 		string name = it->getName();
 		string group = groupType.erase(0,1);
 		string breed = it->getBreed();
