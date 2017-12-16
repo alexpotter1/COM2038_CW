@@ -28,19 +28,10 @@ int main() {
 		cout << horsePtr->getName() << endl;
 	}
 
-  vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
-  vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
-  vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
-
-  animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
-  animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
-
-  StorageManager storageManager;
-  if (storageManager.addAnimalsToStorage(&animalVects1)) {
-    cout << "loaded animals to storage" << endl;
-  }
-
-  cout << "Dogs: " << storageManager.getDogCount() << endl;
-  cout << "Cats: " << storageManager.getCatCount() << endl;
-  cout << "Horses: " << storageManager.getHorseCount() << endl;
+	/*Need to test that Dog, Cat and Horse objects can be added to storage manager*/
+/* Need to test this
+  cout << "Dogs: " << sm.getDogCount() << endl;
+  cout << "Cats: " << sm.getCatCount() << endl;
+  cout << "Horses: " << sm.getHorseCount() << endl;
+*/
 }
