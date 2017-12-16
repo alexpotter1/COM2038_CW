@@ -3,119 +3,95 @@
 using namespace std;
 
 StorageManager::StorageManager() {
-  this->dogMap = map<string, Animal>();
-  this->catMap = map<string, Animal>();
-  this->horseMap = map<string, Animal>();
+  this->dogMap = map<string, Dog>();
+  this->catMap = map<string, Cat>();
+  this->horseMap = map<string, Horse>();
 }
 
-bool StorageManager::addAnimalToStorage(Animal* animal) {
-  string animalType = typeid(*animal).name();
-  animalType.erase(0, 1);
-  if (animalType == "Dog") {
-    this->dogMap.insert({animal->getName(), *animal});
-    return true;
-  } else if (animalType == "Cat") {
-    this->catMap.insert({animal->getName(), *animal});
-    return true;
-  } else if (animalType == "Horse") {
-    this->horseMap.insert({animal->getName(), *animal});
-    return true;
-  } else {
-    return false;
-  }
+StorageManager::~StorageManager() {
 }
 
-bool StorageManager::addAnimalsToStorage(vector< Animal* >* animals) {
-  vector<Animal*>* animalVec = animals;
+bool StorageManager::addDogsToStorage(vector< Dog* >* dogs) {
 
-  for(int i = 0; i < animals->size(); i++){
-    if (!addAnimalToStorage(animals->at(i))) {
-      return false;
-    }
+  for(int i = 0; i < dogs->size(); i++){
+    Dog* dog = dogs->at(i);
+    this->dogMap.insert({dog->getName(), *dog});
   }
 
   return true;
 }
 
-vector<Animal> StorageManager::getAnimalsAsVector() {
-  vector<Animal> animalVector;
-  for (map<string, Animal>::iterator it = this->dogMap.begin(); it != this->dogMap.end(); ++it) {
-    animalVector.push_back(it->second);
-  }
-  for (map<string, Animal>::iterator it = this->horseMap.begin(); it != this->horseMap.end(); ++it) {
-    animalVector.push_back(it->second);
-  }
-  for (map<string, Animal>::iterator it = this->horseMap.begin(); it != this->horseMap.end(); ++it) {
-    animalVector.push_back(it->second);
+bool StorageManager::addCatsToStorage(vector< Cat* >* cats) {
+
+  for(int i = 0; i < cats->size(); i++){
+    Cat* cat = cats->at(i);
+    this->catMap.insert({cat->getName(), *cat});
   }
 
-  return animalVector;
+  return true;
+}
+
+bool StorageManager::addHorsesToStorage(vector< Horse* >* horses) {
+
+  for(int i = 0; i < horses->size(); i++){
+    Horse* horse = horses->at(i);
+    this->horseMap.insert({horse->getName(), *horse});
+  }
+
+  return true;
 }
 
 vector<Dog> StorageManager::getDogsAsVector() {
-  vector<Dog> dogVector;
-  for (map<string, Animal>::iterator it = this->dogMap.begin(); it != this->dogMap.end(); ++it) {
-    Dog* second = dynamic_cast<Dog*>(&(it->second));
-    dogVector.push_back(*second);
+
+  vector<Dog> dogVector = *(new vector<Dog>());
+  dogVector.reserve(this->getDogCount());
+
+  for (map<string, Dog>::iterator it = this->dogMap.begin(); it != this->dogMap.end(); ++it) {
+      dogVector.push_back(it->second);
   }
 
   return dogVector;
 }
 
 vector<Cat> StorageManager::getCatsAsVector() {
-  vector<Cat> catVector;
-  for (map<string, Animal>::iterator it = this->catMap.begin(); it != this->catMap.end(); ++it) {
-    Cat* second = dynamic_cast<Cat*>(&(it->second));
-    catVector.push_back(*second);
+  vector<Cat> catVector = *(new vector<Cat>());
+
+  for (map<string, Cat>::iterator it = this->catMap.begin(); it != this->catMap.end(); ++it) {
+    catVector.push_back(it->second);
   }
 
   return catVector;
 }
 
 vector<Horse> StorageManager::getHorsesAsVector() {
-  vector<Horse> horseVector;
-  for (map<string, Animal>::iterator it = this->horseMap.begin(); it != this->horseMap.end(); ++it) {
-    Horse* second = dynamic_cast<Horse*>(&(it->second));
-    horseVector.push_back(*second);
+  vector<Horse> horseVector = *(new vector<Horse>());
+
+  for (map<string, Horse>::iterator it = this->horseMap.begin(); it != this->horseMap.end(); ++it) {
+    horseVector.push_back(it->second);
   }
 
   return horseVector;
 }
 
-vector<Animal>::const_iterator* StorageManager::getAnimals() {
-  vector<Animal>::const_iterator* beginEndIterators = new vector<Animal>::const_iterator[2];
-  vector<Animal> animals = this->getAnimalsAsVector();
-  beginEndIterators[0] = animals.begin();
-  beginEndIterators[1] = animals.end();
-
-  return beginEndIterators;
+AnimalIterator<Dog>* StorageManager::getDogs() {
+  AnimalIterator<Dog>* animalIter = new AnimalIterator<Dog>;
+  animalIter->iter_begin = this->getDogsAsVector().begin();
+  animalIter->iter_end = this->getDogsAsVector().end();
+  return animalIter;
 }
 
-vector<Dog>::const_iterator* StorageManager::getDogs() {
-  vector<Dog>::const_iterator* beginEndIterators = new vector<Dog>::const_iterator[2];
-  vector<Dog> dogs = this->getDogsAsVector();
-  beginEndIterators[0] = dogs.begin();
-  beginEndIterators[1] = dogs.end();
-
-  return beginEndIterators;
+AnimalIterator<Cat>* StorageManager::getCats() {
+  AnimalIterator<Cat>* animalIter = new AnimalIterator<Cat>;
+  animalIter->iter_begin = this->getCatsAsVector().begin();
+  animalIter->iter_end = this->getCatsAsVector().end();
+  return animalIter;
 }
 
-vector<Cat>::const_iterator* StorageManager::getCats() {
-  vector<Cat>::const_iterator* beginEndIterators = new vector<Cat>::const_iterator[2];
-  vector<Cat> cats = this->getCatsAsVector();
-  beginEndIterators[0] = cats.begin();
-  beginEndIterators[1] = cats.end();
-
-  return beginEndIterators;
-}
-
-vector<Horse>::const_iterator* StorageManager::getHorses() {
-  vector<Horse>::const_iterator* beginEndIterators = new vector<Horse>::const_iterator[2];
-  vector<Horse> horses = this->getHorsesAsVector();
-  beginEndIterators[0] = horses.begin();
-  beginEndIterators[1] = horses.end();
-
-  return beginEndIterators;
+AnimalIterator<Horse>* StorageManager::getHorses() {
+  AnimalIterator<Horse>* animalIter = new AnimalIterator<Horse>;
+  animalIter->iter_begin = this->getHorsesAsVector().begin();
+  animalIter->iter_end = this->getHorsesAsVector().end();
+  return animalIter;
 }
 
 unsigned int StorageManager::getAnimalCount() {

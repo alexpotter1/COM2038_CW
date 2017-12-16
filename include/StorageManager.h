@@ -1,3 +1,4 @@
+#pragma once
 #include <map>
 #include <vector>
 #include <iterator>
@@ -7,24 +8,30 @@
 #include "Horse.h"
 using namespace std;
 
+template<class T>
+struct AnimalIterator {
+  typename vector<T>::const_iterator iter_begin;
+  typename vector<T>::const_iterator iter_end;
+};
+
 class StorageManager {
 private:
-  map<string, Animal> dogMap;
-  map<string, Animal> catMap;
-  map<string, Animal> horseMap;
-  vector<Animal> getAnimalsAsVector();
+  map<string, Dog> dogMap;
+  map<string, Cat> catMap;
+  map<string, Horse> horseMap;
   vector<Dog> getDogsAsVector();
   vector<Cat> getCatsAsVector();
   vector<Horse> getHorsesAsVector();
+
 public:
   StorageManager();
-  ~StorageManager() {};
-  bool addAnimalToStorage(Animal* animal);
-  bool addAnimalsToStorage(vector< Animal* >* animals);
-  vector<Animal>::const_iterator* getAnimals();
-  vector<Dog>::const_iterator* getDogs();
-  vector<Cat>::const_iterator* getCats();
-  vector<Horse>::const_iterator* getHorses();
+  ~StorageManager();
+  bool addDogsToStorage(vector<Dog*>* dogs);
+  bool addCatsToStorage(vector<Cat*>* cats);
+  bool addHorsesToStorage(vector<Horse*>* horses);
+  AnimalIterator<Dog>* getDogs();
+  AnimalIterator<Cat>* getCats();
+  AnimalIterator<Horse>* getHorses();
   unsigned int getAnimalCount();
   unsigned int getDogCount();
   unsigned int getCatCount();

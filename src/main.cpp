@@ -1,4 +1,5 @@
 #include "../include/CSVFileReader.h"
+#include "../include/Interface.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -27,11 +28,40 @@ int main() {
 		Horse* horsePtr = horseVectsPtr->at(i);
 		cout << horsePtr->getName() << endl;
 	}
+  
+  //vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
+  //vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
+  //vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
 
-	/*Need to test that Dog, Cat and Horse objects can be added to storage manager*/
-/* Need to test this
-  cout << "Dogs: " << sm.getDogCount() << endl;
-  cout << "Cats: " << sm.getCatCount() << endl;
-  cout << "Horses: " << sm.getHorseCount() << endl;
-*/
+  //animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
+  //animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
+
+  StorageManager storageManager;
+  if (storageManager.addDogsToStorage(dogVectsPtr)) {
+    cout << "loaded dogs to storage" << endl;
+  }
+	if (storageManager.addCatsToStorage(catVectsPtr)) {
+		cout << "loaded cats to storage" << endl;
+	}
+	if (storageManager.addHorsesToStorage(horseVectsPtr)) {
+		cout << "loaded horses to storage" << endl;
+	}
+
+  cout << "Dogs: " << storageManager.getDogCount() << endl;
+  cout << "Cats: " << storageManager.getCatCount() << endl;
+  cout << "Horses: " << storageManager.getHorseCount() << endl;
+
+  vector<Dog>::const_iterator it = storageManager.getDogs()->iter_begin;
+  for (int i = 0; i < storageManager.getDogCount(); i++) {
+
+		const Dog dog = dynamic_cast<const Dog&>(*it);
+
+    cout << "name: " << dog.getName() << endl;
+		//cout << "tail colour: " << it->getTailColour() << endl;
+    it++;
+  }
+
+	Interface interface(storageManager);
+	interface.printAll();
+	interface.getInput();
 }
