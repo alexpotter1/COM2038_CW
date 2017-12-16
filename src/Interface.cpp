@@ -135,8 +135,6 @@ void Interface::printAll() {
 
 	cout << endl;
 
-	return "";
-
 }
 
 void Interface::getInput() {
