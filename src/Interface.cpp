@@ -7,6 +7,7 @@
 
 Interface::Interface(StorageManager& smanager) {
 	this->storageManager = smanager;
+	counter = 0;
 }
 
 string Interface::printAll() {
@@ -24,26 +25,26 @@ string Interface::printAll() {
 	string mumTitle = "Mom";
 
 	cout << left;
-	cout << setw(10) << nameTitle;
-	cout << setw(10) << groupTitle;
-	cout << setw(10) << breedTitle;
-	cout << setw(10) << colourTitle;
-	cout << setw(10) << earTitle;
-	cout << setw(10) << heightTitle;
-	cout << setw(10) << tailTitle;
-	cout << setw(10) << dadTitle;
-	cout << setw(10) << mumTitle << endl;
+	cout << setw(11) << nameTitle;
+	cout << setw(11) << groupTitle;
+	cout << setw(11) << breedTitle;
+	cout << setw(11) << colourTitle;
+	cout << setw(11) << earTitle;
+	cout << setw(11) << heightTitle;
+	cout << setw(14) << tailTitle;
+	cout << setw(11) << dadTitle;
+	cout << setw(11) << mumTitle << endl;
 
 
 
-	cout << "---------------------------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------" << endl;
 
 	auto it = this->storageManager.getDogs()->iter_begin;
 	for(int i = 0; i < this->storageManager.getDogCount(); i++) {
 
 		const Dog dog = dynamic_cast<const Dog&>(*it);
 
-		string groupType =  typeid(dog).name();
+		string groupType = typeid(dog).name();
 		string name = dog.getName();
 		string group = groupType.erase(0,1);
 		string breed = dog.getBreed();
@@ -55,15 +56,15 @@ string Interface::printAll() {
 		string mumName = dog.getMumName();
 
 		cout << left;
-		cout << setw(10) << name;
-		cout << setw(10) << group;
-		cout << setw(10) << breed;
-		cout << setw(10) << colour;
-		cout << setw(10) << earType;
-		cout << setw(10) << height;
-		cout << setw(10) << tailColour;
-		cout << setw(10) << dadName;
-		cout << setw(10) << mumName << endl;
+		cout << setw(11) << name;
+		cout << setw(11) << group;
+		cout << setw(11) << breed;
+		cout << setw(11) << colour;
+		cout << setw(11) << earType;
+		cout << setw(11) << height;
+		cout << setw(14) << tailColour;
+		cout << setw(11) << dadName;
+		cout << setw(11) << mumName << endl;
 
 		it++;
 	}
@@ -87,15 +88,15 @@ string Interface::printAll() {
 		string mumName = cat.getMumName();
 
 		cout << left;
-		cout << setw(10) << name;
-		cout << setw(10) << group;
-		cout << setw(10) << breed;
-		cout << setw(10) << colour;
-		cout << setw(10) << earType;
-		cout << setw(10) << height;
-		cout << setw(10) << tailColour;
-		cout << setw(10) << dadName;
-		cout << setw(10) << mumName << endl;
+		cout << setw(11) << name;
+		cout << setw(11) << group;
+		cout << setw(11) << breed;
+		cout << setw(11) << colour;
+		cout << setw(11) << earType;
+		cout << setw(11) << height;
+		cout << setw(14) << tailColour;
+		cout << setw(11) << dadName;
+		cout << setw(11) << mumName << endl;
 
 		it1++;
 	}
@@ -119,15 +120,15 @@ string Interface::printAll() {
 		string mumName = horse.getMumName();
 
 		cout << left;
-		cout << setw(10) << name;
-		cout << setw(10) << group;
-		cout << setw(10) << breed;
-		cout << setw(10) << colour;
-		cout << setw(10) << earType;
-		cout << setw(10) << height;
-		cout << setw(10) << tailColour;
-		cout << setw(10) << dadName;
-		cout << setw(10) << mumName << endl;
+		cout << setw(11) << name;
+		cout << setw(11) << group;
+		cout << setw(11) << breed;
+		cout << setw(11) << colour;
+		cout << setw(11) << earType;
+		cout << setw(11) << height;
+		cout << setw(14) << tailColour;
+		cout << setw(11) << dadName;
+		cout << setw(11) << mumName << endl;
 
 		it2++;
 	}
@@ -138,43 +139,11 @@ string Interface::printAll() {
 
 }
 
-/*string Interface::search() {
-	//TODO Sends input string to storage manager, if returned null, no animal with the search. Otherwise print out
-	//The paternal tree.
-
-	//Take the input from the user and split into 2 strings returning 2 strings with no whitespace and lowercase
-
-	string userInput;
-	string userInputToLower;
-	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
-	cin >> userInput;
-
-	locale loc;
-	for(string::size_type i=0; i<userInput.length(); ++i) {
-		userInputToLower = tolower(userInput[i], loc);
-	}
-
-	string userInputToLowerNoWhiteSpace = trim(userInputToLower);
-
-	stringstream ss(userInputToLowerNoWhiteSpace);
-	int i = 0;
-	string item;
-	string outputToSM[2];
-	while (getline(ss, item, ' ')) {
-		outputToSM[i] = item;
-		i++;
-	}
-
-	this->storageManager.search(outputToSM[0], outputToSM[1]);
-
-	return "";
-}*/
-
 void Interface::getInput() {
 	string userInput;
 	string userInputToLower;
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
-	
+
 	getline(cin, userInput);
 
 	transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
@@ -190,35 +159,46 @@ void Interface::getInput() {
 		i++;
 	}
 
-	cout << outputToSM[0] << endl;
-	cout << outputToSM[1] << endl;
 	getPaternalTree(outputToSM[0], outputToSM[1]);
 
 }
 
 void Interface::getPaternalTree(string type, string name) {
-	if(storageManager.search(type, name) != NULL) {
-			paternalTree[counter] = storageManager.search(type, name)->getName();
+
+	Animal* result = storageManager.search(type, name);
+
+	if(result != NULL) {
+
+			if(type == "a" && counter == 0) {
+			string groupType = typeid(*result).name();
+			string group = groupType.erase(0,1);
+			cout << name << " is found in the " << group << " inventory." << endl;
+
+			}
+			paternalTree[counter] = result->getName();
 			counter++;
-			getPaternalTree(type, storageManager.search(type, name)->getDadName());
-	} else if(counter == 0){
-		counter = -1;
+			getPaternalTree(type, result->getDadName());
+	} else if(counter == 1){
+		counter = 0;
+		cout << "Paternal tree of " << paternalTree[0] << ":" << endl;
 		cout << paternalTree[0] << " <-- [END]" << endl;
-	} else if(counter == 1) {
-		counter = -1;
-		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- [END]" << endl;
 	} else if(counter == 2) {
-		counter = -1;
+		counter = 0;
+		cout << "Paternal tree of " << paternalTree[0] << ":" << endl;
+		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- [END]" << endl;
+	} else if(counter == 3) {
+		counter = 0;
+		cout << "Paternal tree of " << paternalTree[0] << ":" << endl;
 		cout << paternalTree[0] << " <-- " << paternalTree[1] << " <-- " << paternalTree[2] << " <-- [END]" << endl;
 	} else {
 		if(type == "d") {
-			cout << name << " was not found in the inventory within the \e[1mdogs\e[0m" << endl;
+			cout << name << " was not found in the inventory within the \e[1mdogs\e[0m!" << endl;
 		} else if(type == "c") {
-			cout << name << " was not found in the inventory within the \e[1mcats\e[0m" << endl;
+			cout << name << " was not found in the inventory within the \e[1mcats\e[0m!" << endl;
 		} else if(type == "h") {
-			cout << name << " was not found in the inventory within the \e[1mhorses\e[0m" << endl;
+			cout << name << " was not found in the inventory within the \e[1mhorses\e[0m!" << endl;
 		} else {
-			cout << name << " was not found in the inventory within the selected inventory" << endl;
+			cout << name << " was not found in any inventory!" << endl;
 		}
 	}
 
