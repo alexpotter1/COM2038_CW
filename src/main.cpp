@@ -28,7 +28,7 @@ int main() {
 		Horse* horsePtr = horseVectsPtr->at(i);
 		cout << horsePtr->getName() << endl;
 	}
-
+  
   //vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
   //vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
   //vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
@@ -64,5 +64,4 @@ int main() {
 	Interface interface(storageManager);
 	interface.printAll();
 	interface.getInput();
-
 }

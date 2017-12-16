@@ -10,7 +10,7 @@ Interface::Interface(StorageManager& smanager) {
 	counter = 0;
 }
 
-string Interface::printAll() {
+void Interface::printAll() {
 
 	cout << "There are " << this->storageManager.getDogCount() << " dog(s), " << this->storageManager.getCatCount()  << " cat(s) and " << this->storageManager.getHorseCount() << " horse(s) in the inventory, which are:" << endl << endl;
 
