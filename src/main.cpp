@@ -1,4 +1,5 @@
 #include "../include/CSVFileReader.h"
+#include "../include/Interface.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -49,5 +50,8 @@ int main() {
     cout << "name: " << it->getName() << endl;
     it++;
   }
+
+	Interface interface(storageManager);
+	interface.printAll();
 
 }

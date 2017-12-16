@@ -4,8 +4,8 @@
 #include <sstream>
 #include <locale>
 
-Interface::Interface() {
-	this->storageManager = StorageManager();
+Interface::Interface(StorageManager& smanager) {
+	this->storageManager = smanager;
 }
 
 string Interface::printAll() {
@@ -17,9 +17,9 @@ string Interface::printAll() {
 	cout << setw(8) << "\e[4mGroup\e[0m";
 	cout << setw(8) << "\e[4mBreed\e[0m";
 	cout << setw(8) << "\e[4mColour\e[0m";
-	cout << setw(8) << "\e[4mEar Type\e[0m";
-	cout << setw(8) << "\e[4mHeight\e[0m";
-	cout << setw(8) << "\e[4mTail Colour\e[0m";
+	//cout << setw(8) << "\e[4mEar Type\e[0m";
+	//cout << setw(8) << "\e[4mHeight\e[0m";
+	//cout << setw(8) << "\e[4mTail Colour\e[0m";
 	cout << setw(8) << "\e[4mDad\e[0m";
 	cout << setw(8) << "\e[4mMom\e[0m" << endl;
 
@@ -33,9 +33,9 @@ string Interface::printAll() {
 		string group = groupType.erase(0,1);
 		string breed = it->getBreed();
 		string colour = it->getColour();
-		string earType = it->getEarType();
-		string height = it->getHeight();
-		string tailColour = it->getTailColour();
+		//string earType = it->getEarType();
+		//string height = it->getHeight();
+		//string tailColour = it->getTailColour();
 		string dadName = it->getDadName();
 		string mumName = it->getMumName();
 
@@ -44,9 +44,9 @@ string Interface::printAll() {
 		cout << setw(8) << group;
 		cout << setw(8) << breed;
 		cout << setw(8) << colour;
-		cout << setw(8) << earType;
-		cout << setw(8) << height;
-		cout << setw(8) << tailColour;
+		//cout << setw(8) << earType;
+		//cout << setw(8) << height;
+		//cout << setw(8) << tailColour;
 		cout << setw(8) << dadName;
 		cout << setw(8) << mumName << endl;
 

@@ -5,7 +5,7 @@ using namespace std;
 
 class Interface {
 public:
-	Interface();
+	Interface(StorageManager& smanager);
 	string printAll();
 	string search();
 	string ltrim(string s, const char* t = " \t\n\r\f\v");
