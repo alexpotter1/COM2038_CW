@@ -10,6 +10,7 @@ class CSVFileReader {
 public:
 	/*Constructor for the CSVFileReader class.*/
 	CSVFileReader();
+	vector<Animal*>* getAnimals();
 	/*Reads a file which is pointed to by a pointer. Then the function creates a pointer to the 
 	vector which stores pointers to Dog objects. The Dog objects have been created using attributes 
 	which have been read from the file. The function returns the pointer to the vector of pointers to 

@@ -27,16 +27,18 @@ int main() {
 		Horse* horsePtr = horseVectsPtr->at(i);
 		cout << horsePtr->getName() << endl;
 	}
-
+/*
   vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
   vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
-  vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
-
+  vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);*/
+/*
   animalVects1.insert(animalVects1.end(), animalVects2.begin(), animalVects2.end());
   animalVects1.insert(animalVects1.end(), animalVects3.begin(), animalVects3.end());
-
+*/
+	vector<Animal*>* animalsVectPtr = csvFileReader.getAnimals();
+	
   StorageManager storageManager;
-  if (storageManager.addAnimalsToStorage(&animalVects1)) {
+  if (storageManager.addAnimalsToStorage(animalsVectPtr)) {
     cout << "loaded animals to storage" << endl;
   }
 
