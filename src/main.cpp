@@ -63,5 +63,6 @@ int main() {
 
 	Interface interface(storageManager);
 	interface.printAll();
+	interface.userInput();
 
 }

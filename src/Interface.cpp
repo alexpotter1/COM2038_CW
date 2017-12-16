@@ -55,6 +55,68 @@ string Interface::printAll() {
 		it++;
 	}
 
+	cout << endl;
+
+	auto it1 = this->storageManager.getCats()->iter_begin;
+	for(int i = 0; i < this->storageManager.getCatCount(); i++) {
+
+		string groupType =  typeid(*it1).name();
+		string name = it1->getName();
+		string group = groupType.erase(0,1);
+		string breed = it1->getBreed();
+		string colour = it1->getColour();
+		//string earType = it->getEarType();
+		//string height = it->getHeight();
+		//string tailColour = it->getTailColour();
+		string dadName = it1->getDadName();
+		string mumName = it1->getMumName();
+
+		cout << left;
+		cout << setw(8) << name;
+		cout << setw(8) << group;
+		cout << setw(8) << breed;
+		cout << setw(8) << colour;
+		//cout << setw(8) << earType;
+		//cout << setw(8) << height;
+		//cout << setw(8) << tailColour;
+		cout << setw(8) << dadName;
+		cout << setw(8) << mumName << endl;
+
+		it1++;
+	}
+
+	cout << endl;
+
+	auto it2 = this->storageManager.getHorses()->iter_begin;
+	for(int i = 0; i < this->storageManager.getHorseCount(); i++) {
+
+		string groupType =  typeid(*it2).name();
+		string name = it2->getName();
+		string group = groupType.erase(0,1);
+		string breed = it2->getBreed();
+		string colour = it2->getColour();
+		//string earType = it->getEarType();
+		//string height = it->getHeight();
+		//string tailColour = it->getTailColour();
+		string dadName = it2->getDadName();
+		string mumName = it2->getMumName();
+
+		cout << left;
+		cout << setw(8) << name;
+		cout << setw(8) << group;
+		cout << setw(8) << breed;
+		cout << setw(8) << colour;
+		//cout << setw(8) << earType;
+		//cout << setw(8) << height;
+		//cout << setw(8) << tailColour;
+		cout << setw(8) << dadName;
+		cout << setw(8) << mumName << endl;
+
+		it2++;
+	}
+
+	cout << endl;
+
 	return "";
 
 }
