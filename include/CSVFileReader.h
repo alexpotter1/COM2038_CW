@@ -43,5 +43,7 @@ private:
 	object.*/
 	Horse* getHorse(string* linePtr);
 	
+	/*Reads a string pointed to by a pointer. The function splits the line by a comma delimeter 
+	into sub-strings and returns the sub-strings.*/
 	vector<string>* getAttributes(string* linePtr);
 };
