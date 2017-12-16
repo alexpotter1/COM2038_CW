@@ -25,7 +25,8 @@ string Interface::printAll() {
 
 	cout << "---------------------------------------------------------------------------------" << endl;
 
-	for(auto it = this->storageManager.getAnimals()[0]; it != this->storageManager.getAnimals()[1]; ++it) {
+	auto it = this->storageManager.getAnimals()->iter_begin;
+	for(int i = 0; i < this->storageManager.getAnimalCount(); i++) {
 
 		string groupType =  typeid(it).name();
 		string name = it->getName();
@@ -48,6 +49,8 @@ string Interface::printAll() {
 		cout << setw(8) << tailColour;
 		cout << setw(8) << dadName;
 		cout << setw(8) << mumName << endl;
+
+		it++;
 	}
 
 	return "";
