@@ -3,6 +3,7 @@
 #include <typeinfo>
 #include <sstream>
 #include <locale>
+#include <algorithm>
 
 Interface::Interface(StorageManager& smanager) {
 	this->storageManager = smanager;
@@ -23,15 +24,15 @@ string Interface::printAll() {
 	string mumTitle = "Mom";
 
 	cout << left;
-	cout << setw(8) << nameTitle;
-	cout << setw(8) << groupTitle;
-	cout << setw(8) << breedTitle;
-	cout << setw(8) << colourTitle;
-	//cout << setw(8) << earTitle;
-	//cout << setw(8) << heightTitle;
-	//cout << setw(8) << tailTitle;
-	cout << setw(8) << dadTitle;
-	cout << setw(8) << mumTitle << endl;
+	cout << setw(10) << nameTitle;
+	cout << setw(10) << groupTitle;
+	cout << setw(10) << breedTitle;
+	cout << setw(10) << colourTitle;
+	cout << setw(10) << earTitle;
+	cout << setw(10) << heightTitle;
+	cout << setw(10) << tailTitle;
+	cout << setw(10) << dadTitle;
+	cout << setw(10) << mumTitle << endl;
 
 
 
@@ -54,15 +55,15 @@ string Interface::printAll() {
 		string mumName = dog.getMumName();
 
 		cout << left;
-		cout << setw(8) << name;
-		cout << setw(8) << group;
-		cout << setw(8) << breed;
-		cout << setw(8) << colour;
-		cout << setw(8) << earType;
-		cout << setw(8) << height;
-		cout << setw(8) << tailColour;
-		cout << setw(8) << dadName;
-		cout << setw(8) << mumName << endl;
+		cout << setw(10) << name;
+		cout << setw(10) << group;
+		cout << setw(10) << breed;
+		cout << setw(10) << colour;
+		cout << setw(10) << earType;
+		cout << setw(10) << height;
+		cout << setw(10) << tailColour;
+		cout << setw(10) << dadName;
+		cout << setw(10) << mumName << endl;
 
 		it++;
 	}
@@ -72,27 +73,29 @@ string Interface::printAll() {
 	auto it1 = this->storageManager.getCats()->iter_begin;
 	for(int i = 0; i < this->storageManager.getCatCount(); i++) {
 
-		string groupType =  typeid(*it1).name();
-		string name = it1->getName();
+		const Cat cat = dynamic_cast<const Cat&>(*it1);
+
+		string groupType = typeid(cat).name();
+		string name = cat.getName();
 		string group = groupType.erase(0,1);
-		string breed = it1->getBreed();
-		string colour = it1->getColour();
-		//string earType = it->getEarType();
-		//string height = it->getHeight();
-		//string tailColour = it->getTailColour();
-		string dadName = it1->getDadName();
-		string mumName = it1->getMumName();
+		string breed = cat.getBreed();
+		string colour = cat.getColour();
+		string earType = cat.getEarType();
+		string height = cat.getHeight();
+		string tailColour = cat.getTailColour();
+		string dadName = cat.getDadName();
+		string mumName = cat.getMumName();
 
 		cout << left;
-		cout << setw(8) << name;
-		cout << setw(8) << group;
-		cout << setw(8) << breed;
-		cout << setw(8) << colour;
-		//cout << setw(8) << earType;
-		//cout << setw(8) << height;
-		//cout << setw(8) << tailColour;
-		cout << setw(8) << dadName;
-		cout << setw(8) << mumName << endl;
+		cout << setw(10) << name;
+		cout << setw(10) << group;
+		cout << setw(10) << breed;
+		cout << setw(10) << colour;
+		cout << setw(10) << earType;
+		cout << setw(10) << height;
+		cout << setw(10) << tailColour;
+		cout << setw(10) << dadName;
+		cout << setw(10) << mumName << endl;
 
 		it1++;
 	}
@@ -102,27 +105,29 @@ string Interface::printAll() {
 	auto it2 = this->storageManager.getHorses()->iter_begin;
 	for(int i = 0; i < this->storageManager.getHorseCount(); i++) {
 
-		string groupType =  typeid(*it2).name();
-		string name = it2->getName();
+		const Horse horse = dynamic_cast<const Horse&>(*it2);
+
+		string groupType = typeid(horse).name();
+		string name = horse.getName();
 		string group = groupType.erase(0,1);
-		string breed = it2->getBreed();
-		string colour = it2->getColour();
-		//string earType = it->getEarType();
-		//string height = it->getHeight();
-		//string tailColour = it->getTailColour();
-		string dadName = it2->getDadName();
-		string mumName = it2->getMumName();
+		string breed = horse.getBreed();
+		string colour = horse.getColour();
+		string earType = horse.getEarType();
+		string height = horse.getHeight();
+		string tailColour = horse.getTailColour();
+		string dadName = horse.getDadName();
+		string mumName = horse.getMumName();
 
 		cout << left;
-		cout << setw(8) << name;
-		cout << setw(8) << group;
-		cout << setw(8) << breed;
-		cout << setw(8) << colour;
-		//cout << setw(8) << earType;
-		//cout << setw(8) << height;
-		//cout << setw(8) << tailColour;
-		cout << setw(8) << dadName;
-		cout << setw(8) << mumName << endl;
+		cout << setw(10) << name;
+		cout << setw(10) << group;
+		cout << setw(10) << breed;
+		cout << setw(10) << colour;
+		cout << setw(10) << earType;
+		cout << setw(10) << height;
+		cout << setw(10) << tailColour;
+		cout << setw(10) << dadName;
+		cout << setw(10) << mumName << endl;
 
 		it2++;
 	}
@@ -169,14 +174,12 @@ void Interface::getInput() {
 	string userInput;
 	string userInputToLower;
 	cout << "Enter the first letter of the animal group and the name of the specified one to find its paternal tree: ";
-	cin >> userInput;
+	
+	getline(cin, userInput);
 
-	locale loc;
-	for(string::size_type i=0; i<userInput.length(); ++i) {
-		userInputToLower = tolower(userInput[i], loc);
-	}
+	transform(userInput.begin(), userInput.end(), userInput.begin(), ::tolower);
 
-	string userInputToLowerNoWhiteSpace = trim(userInputToLower);
+	string userInputToLowerNoWhiteSpace = trim(userInput);
 
 	stringstream ss(userInputToLowerNoWhiteSpace);
 	int i = 0;
@@ -187,9 +190,9 @@ void Interface::getInput() {
 		i++;
 	}
 
-	cout << outputToSM[0];
-	cout << outputToSM[1];
-	//getPaternalTree(outputToSM[0], outputToSM[1]);
+	cout << outputToSM[0] << endl;
+	cout << outputToSM[1] << endl;
+	getPaternalTree(outputToSM[0], outputToSM[1]);
 
 }
 
