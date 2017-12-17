@@ -1,6 +1,7 @@
 #include "../include/Animal.h"
 using namespace std;
 
+// Paramaterised Animal constructor, constructing an animal object with the given attributes
 Animal::Animal(string breed, string name, string colour, string dadName, string mumName) {
   this->breed = breed;
   this->name = name;

@@ -4,35 +4,38 @@
 #include <fstream>
 #include <vector>
 using namespace std;
-// Dog, Animal: Derived, Base
 
 int main() {
+	// Create streams that will be used by csvFileReader
 	ifstream dogsFile("csv/Dogs.csv");
 	ifstream catsFile("csv/Cats.csv");
 	ifstream horsesFile("csv/Horses.csv");
 	CSVFileReader csvFileReader;
+
+	// Output from csvFileReader. All of the animals are now stored.
 	vector<Dog*>* dogVectsPtr = csvFileReader.getDogs(&dogsFile);
 	vector<Cat*>* catVectsPtr = csvFileReader.getCats(&catsFile);
 	vector<Horse*>* horseVectsPtr = csvFileReader.getHorses(&horsesFile);
 
   StorageManager storageManager;
-  if (storageManager.addDogsToStorage(dogVectsPtr)) {
+	//If adding dogs to storageManager fails, print an error.
+  if (!storageManager.addDogsToStorage(dogVectsPtr)) {
+		cout << "Failed to add dogs to storage." << endl;
   }
-	if (storageManager.addCatsToStorage(catVectsPtr)) {
+	//If adding cats to storageManager fails, print an error.
+	if (!storageManager.addCatsToStorage(catVectsPtr)) {
+		cout << "Failed to add cats to storage." << endl;
 	}
-	if (storageManager.addHorsesToStorage(horseVectsPtr)) {
+	//If adding horses to storageManager fails, print an error.
+	if (!storageManager.addHorsesToStorage(horseVectsPtr)) {
+		cout << "Failed to add horses to storage." << endl;
 	}
-
-
-  vector<Dog>::const_iterator it = storageManager.getDogs()->iter_begin;
-  for (unsigned int i = 0; i < storageManager.getDogCount(); i++) {
-
-		const Dog dog = dynamic_cast<const Dog&>(*it);
-
-    it++;
-  }
 
 	Interface interface(storageManager);
+	// Call the interface printAll() method to output information about all animals in the collection.
 	interface.printAll();
+	// Call the interface getInput() method to prompt the user for an input and search for the paternal tree.
 	interface.getInput();
+
+	return 0;
 }
