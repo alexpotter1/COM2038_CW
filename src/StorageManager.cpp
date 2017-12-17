@@ -2,6 +2,7 @@
 #include <typeinfo>
 using namespace std;
 
+/* Use maps to store the animal objects, because it allows for fast lookup with search by the animal's name */
 StorageManager::StorageManager() {
   this->dogMap = map<string, Dog>();
   this->catMap = map<string, Cat>();
@@ -11,6 +12,7 @@ StorageManager::StorageManager() {
 StorageManager::~StorageManager() {
 }
 
+/* For each dog read by the CSVFileReader, add each one to storage */
 bool StorageManager::addDogsToStorage(vector< Dog* >* dogs) {
 
   for(unsigned int i = 0; i < dogs->size(); i++){
@@ -21,6 +23,7 @@ bool StorageManager::addDogsToStorage(vector< Dog* >* dogs) {
   return true;
 }
 
+/* Same as above, but for cats */
 bool StorageManager::addCatsToStorage(vector< Cat* >* cats) {
 
   for(unsigned int i = 0; i < cats->size(); i++){
@@ -31,6 +34,7 @@ bool StorageManager::addCatsToStorage(vector< Cat* >* cats) {
   return true;
 }
 
+/* Same as above, but for horses */
 bool StorageManager::addHorsesToStorage(vector< Horse* >* horses) {
 
   for(unsigned int i = 0; i < horses->size(); i++){
@@ -41,6 +45,8 @@ bool StorageManager::addHorsesToStorage(vector< Horse* >* horses) {
   return true;
 }
 
+/* Transform the map to a vector, so that we can obtain a vector const_iterator over all of the respective objects.
+   We don't care about the key of the map anyway, because the name is encapsulated in the animal class. */
 vector<Dog> StorageManager::getDogsAsVector() {
 
   vector<Dog> dogVector = *(new vector<Dog>());
@@ -73,6 +79,9 @@ vector<Horse> StorageManager::getHorsesAsVector() {
   return horseVector;
 }
 
+/* Return a struct containing the begin pointer of const_iterator and the end pointer.
+   This is preferred to returning the vector and thus leaking data about the internal data structures
+   of StorageManager */
 AnimalIterator<Dog>* StorageManager::getDogs() {
   AnimalIterator<Dog>* animalIter = new AnimalIterator<Dog>;
   animalIter->iter_begin = this->getDogsAsVector().begin();
@@ -94,6 +103,7 @@ AnimalIterator<Horse>* StorageManager::getHorses() {
   return animalIter;
 }
 
+/* Return counts of animals, useful for Interface */
 unsigned int StorageManager::getAnimalCount() {
   return (unsigned int) (this->dogMap.size() + this->catMap.size() + this->horseMap.size());
 }
@@ -110,6 +120,8 @@ unsigned int StorageManager::getHorseCount() {
   return (unsigned int) this->horseMap.size();
 }
 
+/* Lookup animal by name in the maps, and return the animal as a pointer if it exists.
+   If it doesn't exist, return NULL. */
 Animal* StorageManager::search(string type, string name) {
   if (type == "d" || type == "a") {
     if (this->dogMap.count(name)) {

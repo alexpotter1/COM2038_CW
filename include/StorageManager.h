@@ -8,6 +8,7 @@
 #include "Horse.h"
 using namespace std;
 
+/* Nicer wrapper around the iterator begin and end pointers */
 template<class T>
 struct AnimalIterator {
   typename vector<T>::const_iterator iter_begin;
@@ -19,6 +20,9 @@ private:
   map<string, Dog> dogMap;
   map<string, Cat> catMap;
   map<string, Horse> horseMap;
+
+  /* These functions will only need to be called by StorageManager internally,
+     as no other class should be aware of the specifics of the internal structures of this class. */
   vector<Dog> getDogsAsVector();
   vector<Cat> getCatsAsVector();
   vector<Horse> getHorsesAsVector();
