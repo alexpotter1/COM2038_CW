@@ -40,7 +40,7 @@ void Interface::printAll() {
 	cout << "----------------------------------------------------------------------------------------------" << endl;
 
 	auto it = this->storageManager.getDogs()->iter_begin;
-	for(int i = 0; i < this->storageManager.getDogCount(); i++) {
+	for(unsigned int i = 0; i < this->storageManager.getDogCount(); i++) {
 
 		const Dog dog = dynamic_cast<const Dog&>(*it);
 
@@ -72,7 +72,7 @@ void Interface::printAll() {
 	cout << endl;
 
 	auto it1 = this->storageManager.getCats()->iter_begin;
-	for(int i = 0; i < this->storageManager.getCatCount(); i++) {
+	for(unsigned int i = 0; i < this->storageManager.getCatCount(); i++) {
 
 		const Cat cat = dynamic_cast<const Cat&>(*it1);
 
@@ -104,7 +104,7 @@ void Interface::printAll() {
 	cout << endl;
 
 	auto it2 = this->storageManager.getHorses()->iter_begin;
-	for(int i = 0; i < this->storageManager.getHorseCount(); i++) {
+	for(unsigned int i = 0; i < this->storageManager.getHorseCount(); i++) {
 
 		const Horse horse = dynamic_cast<const Horse&>(*it2);
 
