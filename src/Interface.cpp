@@ -37,7 +37,7 @@ void Interface::printAll() {
 
 
 
-	cout << "----------------------------------------------------------------------------------------------" << endl;
+	cout << "--------------------------------------------------------------------------------------------------" << endl;
 
 	auto it = this->storageManager.getDogs()->iter_begin;
 	for(unsigned int i = 0; i < this->storageManager.getDogCount(); i++) {
@@ -52,8 +52,18 @@ void Interface::printAll() {
 		string earType = dog.getEarType();
 		string height = dog.getHeight();
 		string tailColour = dog.getTailColour();
-		string dadName = dog.getDadName();
-		string mumName = dog.getMumName();
+		string dadName;
+		if(dog.getDadName().empty()) {
+			dadName = "N/A";
+		} else {
+			dadName = dog.getDadName();
+		}
+		string mumName;
+		if(dog.getMumName().empty()) {
+			mumName = "N/A";
+		} else {
+			mumName = dog.getMumName();
+		}
 
 		cout << left;
 		cout << setw(11) << name;
@@ -84,8 +94,18 @@ void Interface::printAll() {
 		string earType = cat.getEarType();
 		string height = cat.getHeight();
 		string tailColour = cat.getTailColour();
-		string dadName = cat.getDadName();
-		string mumName = cat.getMumName();
+		string dadName;
+		if(cat.getDadName().empty()) {
+			dadName = "N/A";
+		} else {
+			dadName = cat.getDadName();
+		}
+		string mumName;
+		if(cat.getMumName().empty()) {
+			mumName = "N/A";
+		} else {
+			mumName = cat.getMumName();
+		}
 
 		cout << left;
 		cout << setw(11) << name;
@@ -116,8 +136,18 @@ void Interface::printAll() {
 		string earType = horse.getEarType();
 		string height = horse.getHeight();
 		string tailColour = horse.getTailColour();
-		string dadName = horse.getDadName();
-		string mumName = horse.getMumName();
+		string dadName;
+		if(horse.getDadName().empty()) {
+			dadName = "N/A";
+		} else {
+			dadName = horse.getDadName();
+		}
+		string mumName;
+		if(horse.getMumName().empty()) {
+			mumName = "N/A";
+		} else {
+			mumName = horse.getMumName();
+		}
 
 		cout << left;
 		cout << setw(11) << name;
