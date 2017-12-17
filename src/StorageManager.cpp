@@ -13,7 +13,7 @@ StorageManager::~StorageManager() {
 
 bool StorageManager::addDogsToStorage(vector< Dog* >* dogs) {
 
-  for(int i = 0; i < dogs->size(); i++){
+  for(unsigned int i = 0; i < dogs->size(); i++){
     Dog* dog = dogs->at(i);
     this->dogMap.insert({dog->getName(), *dog});
   }
@@ -23,7 +23,7 @@ bool StorageManager::addDogsToStorage(vector< Dog* >* dogs) {
 
 bool StorageManager::addCatsToStorage(vector< Cat* >* cats) {
 
-  for(int i = 0; i < cats->size(); i++){
+  for(unsigned int i = 0; i < cats->size(); i++){
     Cat* cat = cats->at(i);
     this->catMap.insert({cat->getName(), *cat});
   }
@@ -33,7 +33,7 @@ bool StorageManager::addCatsToStorage(vector< Cat* >* cats) {
 
 bool StorageManager::addHorsesToStorage(vector< Horse* >* horses) {
 
-  for(int i = 0; i < horses->size(); i++){
+  for(unsigned int i = 0; i < horses->size(); i++){
     Horse* horse = horses->at(i);
     this->horseMap.insert({horse->getName(), *horse});
   }

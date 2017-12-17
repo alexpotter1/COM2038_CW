@@ -28,7 +28,7 @@ int main() {
 		Horse* horsePtr = horseVectsPtr->at(i);
 		cout << horsePtr->getName() << endl;
 	}
-  
+
   //vector<Animal*> animalVects1 = csvFileReader.transformToBase<Dog, Animal>(*dogVectsPtr);
   //vector<Animal*> animalVects2 = csvFileReader.transformToBase<Cat, Animal>(*catVectsPtr);
   //vector<Animal*> animalVects3 = csvFileReader.transformToBase<Horse, Animal>(*horseVectsPtr);
@@ -52,7 +52,7 @@ int main() {
   cout << "Horses: " << storageManager.getHorseCount() << endl;
 
   vector<Dog>::const_iterator it = storageManager.getDogs()->iter_begin;
-  for (int i = 0; i < storageManager.getDogCount(); i++) {
+  for (unsigned int i = 0; i < storageManager.getDogCount(); i++) {
 
 		const Dog dog = dynamic_cast<const Dog&>(*it);
 
